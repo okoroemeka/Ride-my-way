@@ -1,0 +1,200 @@
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body{
+    background-image: url("../images/back2.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; 
+    font-family: Tahoma, sans-serif;
+}
+body, html{
+    height: 100%;
+    margin: 0 auto;
+}
+.container{
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    margin: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+.row{
+    width: 100%;
+    float: left;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+.col-3{
+    width:25%;
+}
+.col-4 {
+    width: 33.33%;
+}
+
+.col-8{
+    width: 66.66%;
+}
+.col-12{
+    width: 100%;
+}
+.navbar{
+    max-width: 100%;
+    background-color: #333333;
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px; 
+}
+
+/* Style the links inside the navigation bar */
+.navbar a {
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.navbar .icon {
+    display: none;
+}
+.signin-container{
+    margin-top:5%;
+    margin-bottom: 8%; 
+    padding: 20px;
+    /*padding-top:100px;*/
+}
+#company-name{
+    float: left;
+    display: block; 
+    font-size: 2.0em; 
+    font-weight: bold; 
+    font-family: 'Dancing Script', cursive; color:#ffffff;
+}
+#signup-text,#home-text{
+    padding-right: 20px;
+}
+
+
+/*form area style*/
+.banner-area{
+    text-align: center;
+    /*padding: 70px 0;*/
+    color: #ffffff;
+    font-family: 'Dancing Script', cursive;
+}
+.form-area-signin{
+    font-family: "Museo Slab", sans-serif;
+    height: auto;
+    padding: 40px;
+    background: rgba(0,0,0,0.7);
+    color: #ffffff;
+    border-radius: 5px;
+
+}
+
+.form-header{
+    text-align: center; 
+}
+.font-header h2 h4{
+    font-weight: lighter;
+}
+.form-group p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+.form-group input,button{
+    margin-bottom: 20px;
+    width: 100%;
+    height:40px;
+}
+.form-group button{
+    color: #ffffff; 
+    font-size: 20px;
+    background-color: #0275d8;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+}
+.form-group button:hover{
+    background-color: #1a1aff;
+}
+.form-group input{
+    color: #ffffff;
+    font-size: 15px;
+    border-bottom: 1px solid #ffffff;
+    border-radius: 5px;
+    background-color: transparent;
+    outline: none;
+    height: 40px;
+    padding: 0px 5px;
+}
+
+::placeholder{
+    color: #ffffff;
+}
+.footer{
+    background-color: #000000;
+}
+.
+.signup-banner{
+    color: red;
+}
+
+.form-area-signup,
+.form-area-offer-ride,
+.form-area-request-ride{
+    font-family: "Museo Slab", sans-serif;
+    top: 15%;
+    left: 35%;
+    height: auto;
+    margin-top:5%;
+    margin-bottom: 10%;
+    padding: 20px 40px;
+    background: rgba(0,0,0,0.5);
+    color: #ffffff;
+    border-radius: 5px;
+}
+.signup-container,.request-container,.offerRides-container{
+    justify-content: center;
+}
+
+/* When the screen is less than 800 pixels wide*/
+
+@media only screen and (max-width: 800px) {
+    .navbar a:not(:first-child) {display: none;}
+    .navbar a.icon {
+        float: right;
+        display: block;
+    }
+  .navbar.responsive {position: relative;}
+    .navbar.responsive a.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .navbar.responsive a {
+        float: none;
+        display: block;
+        text-align: center;
+    }
+    .banner-area{
+        width: 100%;
+        padding-top:3px; 
+        font-size: 10px;
+    }
+    .form-area-signin,.form-area-signup,
+    .form-area-offer-ride,.form-area-request-ride{
+        width: 100%;
+        justify-content: center;
+    }
+  }
+
+  
