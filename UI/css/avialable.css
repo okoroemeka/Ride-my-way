@@ -1,0 +1,332 @@
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body{
+    background-color: #e0d6d6f2;
+    font-family: Tahoma, sans-serif;
+}
+body, html{
+    height: 100%;
+    margin: 0;
+}
+.row{
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+
+/*box sizing*/
+.col-2{
+	width: 16.66;
+}
+.col-3{
+	width: 25%;
+}
+.col-4 {
+    width: 33.33%;
+}
+.col-8{
+    width: 66.66%;
+}
+.col-6{
+	width: 50%;
+}
+.col-7{
+	width: 58.33%;
+}
+.col-8{
+	width: 66.66%;
+}
+.col-12{
+    width: 100%;
+}
+
+/*navigation area*/
+.navbar{
+    max-width: 100%;
+    background-color: #333333;
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px; 
+}
+
+/* Style the links inside the navigation bar */
+.navbar a {
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.navbar .icon {
+    display: none;
+}
+#company-name{
+	float: left;
+	display: block; 
+	font-size: 2.0em; 
+	font-weight: bold; 
+	font-family: 'Dancing Script', cursive; 
+	color:#ffffff;"
+}
+#signup-text,#home-text{
+    padding-right: 20px;
+}
+
+#banner-area{
+	background-image: url("../images/back2.jpg") ;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	height: 250px;
+	margin: 0;
+	text-align: center;
+	font-size: 3em;
+	color: #ffffff;
+	font-family: 'Dancing Script', cursive;
+}
+
+/*cards style*/
+.cards-container{
+	margin: 30px 0px;
+	padding-left:5px;
+}
+
+.card{
+	background-color: #333333;
+	overflow: hidden;
+	color: #ffffff;
+	box-shadow: 5px 5px 3px 0px rgba(153,153,153,0.9);
+	border-radius: 10px;
+}
+img{
+	object-fit: cover;
+}
+.card-area{
+	height: 500px;
+}
+.person-details,.user-profile-details ul{
+	display: inline;
+	list-style-type: none;
+
+}
+.facts,.profile-facts{
+	font-weight: bold;
+	font-size: 1em;
+	color: #a58b8b;
+	margin: 0px 0px 0px 20px;
+}
+#ride-offer-caption{
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: lighter;
+	color: white;
+	background-color: black;
+	margin-bottom: 20px;
+}
+.button, .profile-button {
+	background-color: #0275d8; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24);
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+.reject-button{
+	background-color: #ff0000;
+}
+.button:hover{
+	background-color: green;  /*Green */
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24);
+}
+.profile-button:hover {
+    background-color: green;  /*Green */
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24);
+}
+#offer-ride-link{
+	text-decoration: none;
+}
+.offer-ride-button{
+	border: 1px solid #fff;
+    color:#000000;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    border-radius: 10px;
+    width: 200px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.7);
+    transition-duration: 0.4s;
+}
+.offer-ride-button:hover,
+.offer-ride-button:active{
+	color:#ffffff;
+	background-color: #0275d8;
+}
+.interesting-facts{
+	font-weight: bold;
+	font-size: 1.5em;
+	margin: 0px 20px;
+}
+.Rider-image,.profile-image{
+	width: 100%;
+	height: 350px;
+}
+.footer{
+    background-color: #000000;
+}
+
+/*Profile area*/
+.user-profile{
+	margin: auto 20px;
+	height: auto;
+	padding: 40px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+.user-profile-name{
+	text-align: center;
+}
+.profile-image-box{
+	padding-top: 10px;
+	height: 350px;
+	overflow: hidden;
+	border-radius: 15px;
+	background-color: #dddddd;
+}
+.user-profile-details{
+	margin-left:30px; 
+}
+.profile-text{
+	text-align: center;
+	color: #000000;
+	font-size: 1.5em;
+}
+#profile-button-box{
+	margin-top: 5%;
+	padding-left: 20px;
+}
+
+/*table styles */
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-left:10px;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+.rides-offered,.rides-taken{
+	margin-left: 10px;
+}
+
+.edit-profile-button{
+	height: 40px;
+	margin-top: 10px; 
+	padding-left: 10px;
+	background-color: #0275d8;
+	border-radius: 10px;
+}
+
+.edit-profile-button input{
+	margin-top: 10px;
+	font-size: 15px; 
+	font-weight: bold;
+	cursor: pointer;
+}
+.edit-profile-button:hover{
+	background-color: blue;
+}
+
+/*Edit Profile Area*/
+.form-input-edit-profile{
+	margin-bottom: 20px;
+    width: 100%;
+    height:40px;
+    padding: 5px;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 5px;
+}
+.edit-profile-box{
+	margin-left: 20px;
+	font-weight: bold;
+}
+
+.request-created-button{
+text-align: center;
+padding-bottom: 20px;
+}
+
+/* When the screen is less than 800 pixels wide*/
+
+@media only screen and (max-width: 800px) {
+    .navbar a:not(:first-child) {display: none;}
+    .navbar a.icon {
+        float: right;
+        display: block;
+    }
+  .navbar.responsive {position: relative;}
+    .navbar.responsive a.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .navbar.responsive a {
+        float: none;
+        display: block;
+        text-align: center;
+    }
+    #banner-area{
+        font-size: 2em;
+    }
+    .cards-area,.profil-image-area{
+    	width: 50%;
+    	justify-content: center;
+    	margin-bottom: 10px;
+    }
+    .user-profile-details{
+    	width: 100%;
+    	justify-content: center;
+    }
+    .offer-ride-button{
+    	color: #ffffff;
+    	background-color: #0275d8;
+    }
+
+    .profile-text{
+    	font-size: 1.0em;
+    }
+  }
+
+  /* When the screen is less than 600 pixels wide*/
+@media only screen and (max-width: 600px) {
+    .cards-area, .profil-image-area, .user-profile-details{
+    	width: 100%;
+    	justify-content: center;
+    	margin-bottom: 10px;
+    }
+  }
