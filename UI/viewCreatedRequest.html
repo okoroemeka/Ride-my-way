@@ -13,14 +13,10 @@
 	<header>
 			<div class="navbar" id="topnavbar">
 				<a href="index.html" id="company-name">RideMyWay</a>
-				<a href="viewCreatedRequest.html">ride requests</a>
 				<a href="availableRides.html" id="home-text">Available rides</a>
-				<a href="editProfile.html">edit profile</a>
 				<a href="offerRides.html">offer ride</a>
 				<a href="profile.html">profile</a>
-				<a href="request.html">Reqeust ride</a>
 				<a href="signup.html" id="signup-text">sign up</a>
-				<a href="index.html" id="home-text">Home</a>
 				<a href="javascript:void(0);" class="icon" onclick="toggleClass()"> <i class="fa fa-bars"></i> </a>
 			</div>
 		</header>
@@ -29,7 +25,14 @@
 			<div class="row" style="margin: 0">
 				<!-- banner area -->
 				<div class="col-12" id="banner-area">
-					<h1>Earn more with your empty seats, offer a ride today.<a href="offerRides.html" id="offer-ride-link"> <button type="button" class="offer-ride-button">Offer Ride</button></a> </h1>
+					<div class="row">
+						<div class="col-12" id="banner-area-container">
+							<h1>Earn more with your empty seats, offer a ride today.<a href="offerRides.html" id="offer-ride-link"> 
+								<button type="button" class="offer-ride-button">Offer Ride</button></a> 
+							</h1>
+						</div>
+					</div>
+					
 				</div>
 			</div>
 			<div class="row">
@@ -58,7 +61,7 @@
 							</div>
 							<div class="row">
 								<div class="col-6 request-created-button">
-									<button type="button" class="button">accept</button>
+									<a href="request.html"><button type="button" class="button">accept</button></a>
 								</div>
 								<div class="col-6 request-created-button">
 									<button type="button" class="button reject-button" >reject</button>

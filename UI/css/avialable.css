@@ -54,6 +54,10 @@ body, html{
     margin: 0px; 
 }
 
+.navbar a:not(:first-child) {
+    padding-top:22px;
+}
+
 /* Style the links inside the navigation bar */
 .navbar a {
     float: right;
@@ -78,6 +82,11 @@ body, html{
 #signup-text,#home-text{
     padding-right: 20px;
 }
+#banner-area-container{
+    margin: 0 auto;
+    height: 250px;
+    background-color: rgba(0,0,0,0.5);
+}
 
 #banner-area{
 	background-image: url("../images/back2.jpg") ;
@@ -87,6 +96,7 @@ body, html{
 	width: 100%;
 	height: 250px;
 	margin: 0;
+    padding: 0;
 	text-align: center;
 	font-size: 3em;
 	color: #ffffff;
