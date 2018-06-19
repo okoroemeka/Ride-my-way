@@ -31,26 +31,26 @@ describe('Get request for /api/v1/rides', () =>{
   });
 });
 
-// describe('POST request for /rides', () =>{
-//   it('should return status 201 for post ride offer', (done) => {
-//     const newRideoffer = {
-//       firstName: 'ebuka',
-//       lastName: 'mbaso',
-//       phoneNumber: 23408945976,
-//       currentLocation: 'Ajaa',
-//       destination: 'mary Land',
-//       DepartureTime: '12:00pm',
-//     };
-//     chai.request(app)
-//       .post('/api/v1/rides')
-//       .send(newRideoffer)
-//       .type('form')
-//       .end((err, res) => {
-//         res.should.have.status(201);
-//         res.body.should.be.a('object');
-//         expect(res.body).be.an('object');
-//         assert.isNumber(res.body.rideOfferId);
-//         done();
-//       });
-//   });
-// });
+describe('POST request for /rides', () =>{
+  it('should return status 201 for post ride offer', (done) => {
+    const newRideoffer = {
+      firstName: 'ebuka',
+      lastName: 'mbaso',
+      phoneNumber: 23408945976,
+      currentLocation: 'Ajaa',
+      destination: 'mary Land',
+      DepartureTime: '12:00pm',
+    };
+    chai.request(app)
+      .post('/api/v1/rides')
+      .send(newRideoffer)
+      .type('form')
+      .end((err, res) => {
+        res.should.have.status(201);
+        res.body.should.be.a('object');
+        expect(res.body).be.an('object');
+        assert.isNumber(res.body.rideOfferId);
+        done();
+      });
+  });
+});
