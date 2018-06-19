@@ -16,7 +16,7 @@ const store = {
     currentLocation: 'Ikeja',
     destination: 'Ajaa',
     DepartureTime: '12:00pm',
-    rideRequest: [],
+    rideRequests: [],
   },
   ],
 };
@@ -29,5 +29,6 @@ app.use((req, res, next) => {
 app.get('/api/v1/rides', rideOffersController.getAllRideOffers);
 app.get('/api/v1/rides/:rideOfferId', rideOffersController.getSpecificRideOffers);
 app.post('/api/v1/rides', rideOffersController.creatRideOffer);
+app.post('/api/v1/rides/:rideOfferId/requests', rideOffersController.joinRide);
 
 export default app;

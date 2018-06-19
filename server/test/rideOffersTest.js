@@ -47,9 +47,32 @@ describe('POST request for /rides', () =>{
       .type('form')
       .end((err, res) => {
         res.should.have.status(201);
-        res.body.should.be.a('object');
+        res.body.should.be.an('object');
         expect(res.body).be.an('object');
         assert.isNumber(res.body.rideOfferId);
+        done();
+      });
+  });
+});
+
+describe('POST request for /rides/:ridesId/requests', () =>{
+  it('should return status 201 for post ride request', (done) => {
+    const newRideRequest = {
+      firstName: 'ebuka',
+      lastName: 'mbaso',
+      phoneNumber: 23408945976,
+      currentLocation: 'Ajaa',
+      DepartureTime: '12:00pm',
+    };
+    chai.request(app)
+      .post('/api/v1/rides/0/requests')
+      .send(newRideRequest)
+      .type('form')
+      .end((err, res) => {
+        res.should.have.status(201);
+        res.body.should.be.an('object');
+        expect(res.body).be.an('object');
+        assert.isNumber(res.body.rideRequestId);
         done();
       });
   });
