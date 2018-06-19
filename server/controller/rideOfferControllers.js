@@ -8,12 +8,17 @@ class Rideoffers {
     const allRideOffers = req.store.ridesOffer;
     res.status(200).json(allRideOffers);
   }
-
-//   static getSpecificRideOffers(req, res) {
-//     const Id = req.params.rideOfferId;
-//     const rideOffer = req.store.ridesOffer[Id];
-//     res.status(200).json(rideOffer);
-//   }
+/**
+   *@returns {Object} getSpecificRideOffers
+   * @param {*} req
+   * @param {*} res
+ * 
+ */
+  static getSpecificRideOffers(req, res) {
+    const Id = req.params.rideOfferId;
+    const rideOffer = req.store.ridesOffer[Id];
+    res.status(200).json(rideOffer);
+  }
 
 //   static creatRideOffer(req, res) {
 //     const rideOfferDetails = {

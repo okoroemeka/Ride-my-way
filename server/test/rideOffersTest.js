@@ -19,17 +19,17 @@ describe('Get request for /rides', () => {
   });
 });
 
-// describe('Get request for /api/v1/rides', () =>{
-//   it('should return status 200 for get specific ride offer request', (done) => {
-//     chai.request(app)
-//       .get('/api/v1/rides/0')
-//       .end((err, res) => {
-//         res.should.have.status(200);
-//         res.body.should.be.an('object');
-//         done();
-//       });
-//   });
-// });
+describe('Get request for /api/v1/rides', () =>{
+  it('should return status 200 for get specific ride offer request', (done) => {
+    chai.request(app)
+      .get('/api/v1/rides/0')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.an('object');
+        done();
+      });
+  });
+});
 
 // describe('POST request for /rides', () =>{
 //   it('should return status 201 for post ride offer', (done) => {

@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/api/v1/rides', rideOffersController.getAllRideOffers);
-// app.get('/api/v1/rides/:rideOfferId', rideOffersController.getSpecificRideOffers);
+app.get('/api/v1/rides/:rideOfferId', rideOffersController.getSpecificRideOffers);
 // app.post('/api/v1/rides', rideOffersController.creatRideOffer);
 
 export default app;
