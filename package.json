@@ -1,0 +1,39 @@
+{
+  "name": "Ride-my-way",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon bin/www --exec babel-node --presets env",
+    "build": "babel bin/www -d dist --presets env",
+    "serve": "node dist/www",
+    "test": "mocha --compilers js:babel-register server/test --exit --timeout 20000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/okoroemeka/Ride-my-way.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/okoroemeka/Ride-my-way/issues"
+  },
+  "homepage": "https://github.com/okoroemeka/Ride-my-way#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.17.5"
+  }
+}
