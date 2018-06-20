@@ -77,3 +77,38 @@ describe('POST request for /rides/:ridesId/requests', () =>{
       });
   });
 });
+
+describe('POST request for /rides/:ridesId/requests', () =>{
+  it('should return status 404 for post ride request that have not been created yet', (done) => {
+    chai.request(app)
+      .get('/api/v1/rides/2')
+      .end((err, res) => {
+        res.should.have.status(404);
+        res.body.should.be.an('object');
+        expect(res.body).be.an('object');
+        assert.isString(res.body.message);
+        assert.equal(res.body.message, 'Ride offer does not exist');
+        done();
+      });
+  });
+});
+
+describe('PUT requst for /rides/:ridesId', () => {
+  it('should return status 200 for  put ride request to update a specific ride', (done) => {
+    const updateRideRequest = {
+      DepartureTime: '12:00pm',
+    };
+    chai.request(app)
+      .put('/api/v1/rides/0')
+      .send(updateRideRequest)
+      .type('form')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.an('object');
+        expect(res.body).be.an('object');
+        assert.isString(res.body.message);
+        assert.equal(res.body.message, 'Ride details updated');
+        done();
+      });
+  });
+});
