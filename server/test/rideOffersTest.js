@@ -7,6 +7,8 @@ const { expect, assert, should } = chai;
 should();
 chai.use(chaiHttp);
 
+// Test for get all ride offers
+
 describe('Get request for /rides', () => {
   it('should return status 200 for get all rides offer request', (done) => {
     chai.request(app)
@@ -19,7 +21,8 @@ describe('Get request for /rides', () => {
   });
 });
 
-describe('Get request for /api/v1/rides', () =>{
+// Test for get specif ride
+describe('Get request for /api/v1/rides/ridesId', () =>{
   it('should return status 200 for get specific ride offer request', (done) => {
     chai.request(app)
       .get('/api/v1/rides/0')
@@ -31,6 +34,7 @@ describe('Get request for /api/v1/rides', () =>{
   });
 });
 
+// Test for create ride offer
 describe('POST request for /rides', () =>{
   it('should return status 201 for post ride offer', (done) => {
     const newRideoffer = {
@@ -55,7 +59,8 @@ describe('POST request for /rides', () =>{
   });
 });
 
-describe('POST request for /rides/:ridesId/requests', () =>{
+// Test for Join ride.
+describe('POST request for /rides/ridesId/requests', () =>{
   it('should return status 201 for post ride request', (done) => {
     const newRideRequest = {
       firstName: 'ebuka',
@@ -78,7 +83,8 @@ describe('POST request for /rides/:ridesId/requests', () =>{
   });
 });
 
-describe('POST request for /rides/:ridesId/requests', () =>{
+// Test for Get ride request that has not been created yet.
+describe('Get request for /rides/ridesId', () => {
   it('should return status 404 for post ride request that have not been created yet', (done) => {
     chai.request(app)
       .get('/api/v1/rides/2')
@@ -93,8 +99,9 @@ describe('POST request for /rides/:ridesId/requests', () =>{
   });
 });
 
+// Test for update ride offer
 describe('PUT requst for /rides/:ridesId', () => {
-  it('should return status 200 for  put ride request to update a specific ride', (done) => {
+  it('should return status 200 for put ride request', (done) => {
     const updateRideRequest = {
       DepartureTime: '12:00pm',
     };
@@ -108,6 +115,18 @@ describe('PUT requst for /rides/:ridesId', () => {
         expect(res.body).be.an('object');
         assert.isString(res.body.message);
         assert.equal(res.body.message, 'Ride details updated');
+        done();
+      });
+  });
+});
+
+// Test for delete ride offer
+describe('Delete requst for /rides/:ridesId', () => {
+  it('should return status 204 for delete ride offer request', (done) => {
+    chai.request(app)
+      .delete('/api/v1/rides/0')
+      .end((err, res) => {
+        res.should.have.status(204);
         done();
       });
   });
