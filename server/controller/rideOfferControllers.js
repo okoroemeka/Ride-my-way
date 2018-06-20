@@ -11,7 +11,7 @@ class Rideoffers {
   /**
    *@returns {Object} getSpecificRideOffers
    * @param {*} req
-   * @param {*} res 
+   * @param {*} res
   */
   static getSpecificRideOffers(req, res) {
     const Id = req.params.rideOfferId;
@@ -22,7 +22,7 @@ class Rideoffers {
   /**
    *@returns {Object} creatRideOffer
    * @param {*} req
-   * @param {*} res 
+   * @param {*} res
   */
   static creatRideOffer(req, res) {
     const rideOfferDetails = {
@@ -37,9 +37,15 @@ class Rideoffers {
     req.store.ridesOffer.push(rideOfferDetails);
     res.status(201).send({ rideOfferId });
   }
+
+  /**
+   *@returns {Object} joinRide
+   * @param {*} req
+   * @param {*} res
+  */
   static joinRide(req, res) {
     const rideRequestDetails = {
-      firstName: req.body.firstName, 
+      firstName: req.body.firstName,
       lastName: req.body.lastName,
       phoneNumber: req.body.phoneNumber,
       currentLocation: req.body.currentLocation,
