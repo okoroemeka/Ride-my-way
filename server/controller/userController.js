@@ -38,6 +38,27 @@ class User {
       userId: newuserId,
     });
   }
+
+  static userSignIn(req, res) {
+    // get user information
+    const userInformation = {
+      email: req.body.email,
+      password: req.body.password,
+    };
+
+    // checking if user does not exist
+    const userExist = req.store.user
+      .filter(user => user.email === req.body.email && user.password === req.body.password);
+
+    if (userExist.length !== 0) {
+      return res.status(200).send({
+        message: 'Log in successful',
+      });
+    }
+    return res.status(401).send({
+      message: 'Your email or password is incorrect',
+    });
+  }
 }
 
 export default User;
