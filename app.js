@@ -32,5 +32,6 @@ app.get('/api/v1/rides/:rideOfferId', rideOffersController.getSpecificRideOffers
 app.post('/api/v1/rides', rideOffersController.creatRideOffer);
 app.post('/api/v1/rides/:rideOfferId/requests', rideOfferAuth.rideOfferExist, rideOffersController.joinRide);
 app.put('/api/v1/rides/:rideOfferId', rideOfferAuth.rideOfferExist, rideOffersController.updateRideOfferDetails);
+app.delete('/api/v1/rides/:rideOfferId', rideOfferAuth.rideOfferExist, rideOffersController.deleteRideOffer);
 
 export default app;
