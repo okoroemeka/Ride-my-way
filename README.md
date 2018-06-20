@@ -1,2 +1,2 @@
-[![Build Status](https://travis-ci.org/okoroemeka/Ride-my-way.svg?branch=features)](https://travis-ci.org/okoroemeka/Ride-my-way)
+[![Build Status](https://travis-ci.org/okoroemeka/Ride-my-way.svg?branch=features)](https://travis-ci.org/okoroemeka/Ride-my-way)  [![Coverage Status](https://coveralls.io/repos/github/okoroemeka/Ride-my-way/badge.svg?branch=features)](https://coveralls.io/github/okoroemeka/Ride-my-way?branch=features)
 # Ride-my-way
