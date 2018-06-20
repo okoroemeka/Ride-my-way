@@ -6,7 +6,7 @@ class Rideoffers {
    */
   static getAllRideOffers(req, res) {
     const allRideOffers = req.store.ridesOffer;
-    res.status(200).json(allRideOffers);
+    res.status(200).send(allRideOffers);
   }
   /**
    *@returns {Object} getSpecificRideOffers
@@ -16,7 +16,12 @@ class Rideoffers {
   static getSpecificRideOffers(req, res) {
     const Id = req.params.rideOfferId;
     const rideOffer = req.store.ridesOffer[Id];
-    res.status(200).json(rideOffer);
+    if (rideOffer) {
+      return res.status(200).send(rideOffer);
+    }
+    return res.status(404).send({
+      message: 'Ride offer does not exist',
+    });
   }
 
   /**
@@ -55,6 +60,21 @@ class Rideoffers {
     const rideRequestId = req.store.ridesOffer[offerId].rideRequests.length;
     req.store.ridesOffer[offerId].rideRequests.push(rideRequestDetails);
     res.status(201).send({ rideRequestId });
+  }
+
+  static updateRideOfferDetails(req, res) {
+    const offerId = req.params.rideOfferId;
+    const informationToUpdate = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      phoneNumber: req.body.phoneNumber,
+      currentLocation: req.body.currentLocation,
+      departureTime: req.body.departureTime,
+    };
+    req.store.ridesOffer[offerId] = informationToUpdate;
+    return res.status(200).send({
+      message: 'Ride details updated',
+    });
   }
 }
 export default Rideoffers;
