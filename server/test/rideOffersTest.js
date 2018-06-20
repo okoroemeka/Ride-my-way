@@ -9,7 +9,7 @@ chai.use(chaiHttp);
 
 // Test for get all ride offers
 
-describe('Get request for /rides', () => {
+describe('Get request for /api/v1/rides', () => {
   it('should return status 200 for get all rides offer request', (done) => {
     chai.request(app)
       .get('/api/v1/rides')
@@ -35,7 +35,7 @@ describe('Get request for /api/v1/rides/ridesId', () =>{
 });
 
 // Test for create ride offer
-describe('POST request for /rides', () =>{
+describe('POST request for /api/v1/rides', () =>{
   it('should return status 201 for post ride offer', (done) => {
     const newRideoffer = {
       firstName: 'ebuka',
@@ -60,7 +60,7 @@ describe('POST request for /rides', () =>{
 });
 
 // Test for Join ride.
-describe('POST request for /rides/ridesId/requests', () =>{
+describe('POST request for /api/v1/rides/ridesId/requests', () =>{
   it('should return status 201 for post ride request', (done) => {
     const newRideRequest = {
       firstName: 'ebuka',
@@ -84,7 +84,7 @@ describe('POST request for /rides/ridesId/requests', () =>{
 });
 
 // Test for Get ride request that has not been created yet.
-describe('Get request for /rides/ridesId', () => {
+describe('Get request for /api/v1/rides/ridesId', () => {
   it('should return status 404 for post ride request that have not been created yet', (done) => {
     chai.request(app)
       .get('/api/v1/rides/2')
@@ -100,7 +100,7 @@ describe('Get request for /rides/ridesId', () => {
 });
 
 // Test for update ride offer
-describe('PUT requst for /rides/:ridesId', () => {
+describe('PUT requst for /api/v1/rides/:ridesId', () => {
   it('should return status 200 for put ride request', (done) => {
     const updateRideRequest = {
       DepartureTime: '12:00pm',
@@ -127,6 +127,78 @@ describe('Delete requst for /rides/:ridesId', () => {
       .delete('/api/v1/rides/0')
       .end((err, res) => {
         res.should.have.status(204);
+        done();
+      });
+  });
+});
+
+// Test for user sign up
+describe('Post request for /api/v1/auth/signup', () => {
+  it('should return 201 for post user signup request', (done) => {
+    const newUser = {
+      firstName: 'emeka',
+      lastName: 'mika',
+      email: 'ewq@yahoo.com',
+      password: 'weed',
+      confirmPassword: 'weed',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send(newUser)
+      .type('form')
+      .end((err, res) => {
+        res.should.have.status(201);
+        res.body.should.be.an('object');
+        expect(res.body).be.an('object');
+        assert.isString(res.body.message);
+        assert.isNumber(res.body.userId);
+        assert.equal(res.body.message, 'Welcome to Ride my way');
+        done();
+      });
+  });
+
+// Test for user signup that already exists
+  it('should return 409 for post user signup request that already exists', (done) => {
+    const newUser = {
+      firstName: 'emeka',
+      lastName: 'mika',
+      email: 'ewq@yahoo.com',
+      password: 'weed',
+      confirmPassword: 'weed',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send(newUser)
+      .type('form')
+      .end((err, res) => {
+        res.should.have.status(409);
+        res.body.should.be.an('object');
+        expect(res.body).be.an('object');
+        assert.isString(res.body.message);
+        assert.equal(res.body.message, 'user already exists');
+        done();
+      });
+  });
+
+  // Test for user with wrong credentials
+  it('should return 400 for post user signup request with mismatched password', (done) => {
+    const newUser = {
+      firstName: 'emeka',
+      lastName: 'mika',
+      email: 'wesd@yahoo.com',
+      password: 'weesd',
+      confirmPassword: 'sweed',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send(newUser)
+      .type('form')
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.an('object');
+        expect(res.body).be.an('object');
+        assert.isString(res.body.message);
+        assert.equal(res.body.message, 'The passwords do not match, please type them again');
         done();
       });
   });
