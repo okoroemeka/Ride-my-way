@@ -1,6 +1,6 @@
 node_modules/
 .eslintrc.json
-.vscode
-dist
-package-lock.json
+.vscode/
 cach.js
+node_modules/
+package-lock.json
