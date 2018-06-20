@@ -62,6 +62,11 @@ class Rideoffers {
     res.status(201).send({ rideRequestId });
   }
 
+  /**
+   *@returns {Object} updateRideOfferDetails
+   * @param {*} req
+   * @param {*} res
+  */
   static updateRideOfferDetails(req, res) {
     const offerId = req.params.rideOfferId;
     const informationToUpdate = {
@@ -75,6 +80,12 @@ class Rideoffers {
     return res.status(200).send({
       message: 'Ride details updated',
     });
+  }
+
+  static deleteRideOffer(req, res) {
+    const offerId = req.params.rideOfferId;
+    req.store.ridesOffer.splice(offerId, 1);
+    return res.status(204).send();
   }
 }
 export default Rideoffers;
