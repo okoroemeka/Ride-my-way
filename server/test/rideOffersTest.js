@@ -203,3 +203,45 @@ describe('Post request for /api/v1/auth/signup', () => {
       });
   });
 });
+
+// Test for user sign in
+describe('POST request for user sign in', () => {
+
+  // For alredy existing user
+  it('should return 200 for user sign in request', (done) => {
+    const user = {
+      email: 'ewq@yahoo.com',
+      password: 'weed',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .send(user)
+      .type('form')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.an('object');
+        assert.isString(res.body.message);
+        assert.equal(res.body.message, 'Log in successful');
+        done();
+      });
+  });
+
+  // Test for a user that does not exist
+  it('should return 401 for user that does not exist', (done) => {
+    const user = {
+      email: 'wq@yahoo.com',
+      password: 'weed',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .send(user)
+      .type('form')
+      .end((err, res) => {
+        res.should.have.status(401);
+        res.body.should.be.an('object');
+        assert.isString(res.body.message);
+        assert.equal(res.body.message, 'Your email or password is incorrect');
+        done();
+      });
+  });
+});
