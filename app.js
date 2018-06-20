@@ -8,7 +8,7 @@ import store from './server/seedData/seed';
 // Importing controllers
 import rideOfferAuth from './server/middlewares/rideOfferAuth';
 import rideOffersController from './server/controller/rideOfferControllers';
-import userController from './server/controller/signupController';
+import userController from './server/controller/userController';
 
 
 const app = express();
