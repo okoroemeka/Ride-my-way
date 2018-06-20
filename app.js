@@ -1,6 +1,7 @@
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
+import rideOfferAuth from './server/middlewares/rideOfferAuth';
 import rideOffersController from './server/controller/rideOfferControllers';
 
 const app = express();
@@ -29,6 +30,7 @@ app.use((req, res, next) => {
 app.get('/api/v1/rides', rideOffersController.getAllRideOffers);
 app.get('/api/v1/rides/:rideOfferId', rideOffersController.getSpecificRideOffers);
 app.post('/api/v1/rides', rideOffersController.creatRideOffer);
-app.post('/api/v1/rides/:rideOfferId/requests', rideOffersController.joinRide);
+app.post('/api/v1/rides/:rideOfferId/requests', rideOfferAuth.rideOfferExist, rideOffersController.joinRide);
+app.put('/api/v1/rides/:rideOfferId', rideOfferAuth.rideOfferExist, rideOffersController.updateRideOfferDetails);
 
 export default app;
