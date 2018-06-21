@@ -7,9 +7,10 @@ const { expect, assert, should } = chai;
 should();
 chai.use(chaiHttp);
 
-// Test for get all ride offers
+// Test for get ride offers
 
 describe('Get request for /api/v1/rides', () => {
+  // Get all ride offers
   it('should return status 200 for get all rides offer request', (done) => {
     chai.request(app)
       .get('/api/v1/rides')
@@ -19,10 +20,35 @@ describe('Get request for /api/v1/rides', () => {
         done();
       });
   });
+
+  // Get ride offers according to location
+  it('should return status 200 for get rides offer by location', (done) => {
+    chai.request(app)
+      .get('/api/v1/rides?location=Ikeja')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.an('array');
+        done();
+      });
+  });
+
+  // Test for ride offers that do not exist in a particular location
+  it('should return status 404 for rides offers that are not in a particular location', (done) => {
+    chai.request(app)
+      .get('/api/v1/rides?location=mile12')
+      .end((err, res) => {
+        res.should.have.status(404);
+        res.body.should.be.an('object');
+        expect(res.body.message).be.a('string');
+        assert.isString(res.body.message);
+        assert.equal(res.body.message, 'No ride offers within this location');
+        done();
+      });
+  });
 });
 
 // Test for get specif ride
-describe('Get request for /api/v1/rides/ridesId', () =>{
+describe('Get request for /api/v1/rides/ridesId', () => {
   it('should return status 200 for get specific ride offer request', (done) => {
     chai.request(app)
       .get('/api/v1/rides/0')
@@ -35,7 +61,7 @@ describe('Get request for /api/v1/rides/ridesId', () =>{
 });
 
 // Test for create ride offer
-describe('POST request for /api/v1/rides', () =>{
+describe('POST request for /api/v1/rides', () => {
   it('should return status 201 for post ride offer', (done) => {
     const newRideoffer = {
       firstName: 'ebuka',
@@ -60,7 +86,7 @@ describe('POST request for /api/v1/rides', () =>{
 });
 
 // Test for Join ride.
-describe('POST request for /api/v1/rides/ridesId/requests', () =>{
+describe('POST request for /api/v1/rides/ridesId/requests', () => {
   it('should return status 201 for post ride request', (done) => {
     const newRideRequest = {
       firstName: 'ebuka',
@@ -157,7 +183,7 @@ describe('Post request for /api/v1/auth/signup', () => {
       });
   });
 
-// Test for user signup that already exists
+  // Test for user signup that already exists
   it('should return 409 for post user signup request that already exists', (done) => {
     const newUser = {
       firstName: 'emeka',
@@ -206,7 +232,6 @@ describe('Post request for /api/v1/auth/signup', () => {
 
 // Test for user sign in
 describe('POST request for user sign in', () => {
-
   // For alredy existing user
   it('should return 200 for user sign in request', (done) => {
     const user = {
