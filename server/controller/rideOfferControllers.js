@@ -93,6 +93,11 @@ class Rideoffers {
     });
   }
 
+  /**
+   *@returns {Object} deleteRideOffer
+   * @param {*} req
+   * @param {*} res
+  */
   static deleteRideOffer(req, res) {
     const offerId = req.params.rideOfferId;
     req.store.ridesOffer.splice(offerId, 1);
