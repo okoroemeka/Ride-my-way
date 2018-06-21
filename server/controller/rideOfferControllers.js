@@ -5,8 +5,19 @@ class Rideoffers {
    * @param {*} res
    */
   static getAllRideOffers(req, res) {
+    if (req.query.location) {
+      const currentLocation = req.query.location;
+      const rideOffers = req.store.ridesOffer
+        .filter(rideOffer => rideOffer.currentLocation === currentLocation);
+      if (rideOffers.length !== 0) {
+        return res.status(200).send(rideOffers);
+      }
+      return res.status(404).send({
+        message: 'No ride offers within this location',
+      });
+    }
     const allRideOffers = req.store.ridesOffer;
-    res.status(200).send(allRideOffers);
+    return res.status(200).send(allRideOffers);
   }
   /**
    *@returns {Object} getSpecificRideOffers
@@ -82,6 +93,11 @@ class Rideoffers {
     });
   }
 
+  /**
+   *@returns {Object} deleteRideOffer
+   * @param {*} req
+   * @param {*} res
+  */
   static deleteRideOffer(req, res) {
     const offerId = req.params.rideOfferId;
     req.store.ridesOffer.splice(offerId, 1);
