@@ -8,7 +8,7 @@
     "build": "babel bin/www -d dist --presets env",
     "serve": "node dist/www",
     "coverage":"nyc report --reporter=text-lcov | coveralls",
-    "test": "mocha --compilers js:babel-register server/test --exit --timeout 20000"
+    "test": "NODE_ENV=test nyc --reporter=html --reporter=text mocha --compilers js:babel-register server/test --exit --timeout 20000"
   },
   "repository": {
     "type": "git",
