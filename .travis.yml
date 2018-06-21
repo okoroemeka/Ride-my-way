@@ -1,12 +1,28 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=47434b9864a5e2809d0ae9aa0f9aeb9f1cdae91993cdfde9adacf8b0e55efcfe
+    
 language: node_js
+
 cache: bundler
+
 node_js:
   - "stable"
+
 sudo: false
+
 dist: trusty
+
 services:
   - postgresql
+
+before_script:
+  - curl -L http://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
 script:
   - npm run test
+
 after_success:
   - npm run coverage
