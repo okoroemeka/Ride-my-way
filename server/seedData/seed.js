@@ -1,3 +1,4 @@
+// Seed data for test
 const store = {
   ridesOffer: [{
     firstName: 'emeka',

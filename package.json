@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "nodemon bin/www --exec babel-node --presets env",
+    "start": "nodemon bin/www --exec babel-node --presets env",
     "build": "babel bin/www -d dist --presets env",
     "serve": "node dist/www",
     "coverage":"nyc report --reporter=text-lcov | coveralls",

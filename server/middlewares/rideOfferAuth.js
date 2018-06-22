@@ -1,6 +1,6 @@
 class RideOfferAuth {
 /**
-  *@returns{object}description
+  *@returns{function call} rideOfferExist 
   *@param {*} request
   *@param {*} response
   *@param {*} next
