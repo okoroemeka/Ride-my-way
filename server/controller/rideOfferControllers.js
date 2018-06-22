@@ -1,6 +1,8 @@
+/*Ride offer controller Object*/
+
 class Rideoffers {
   /**
-   * @returns {Object} getAllRidesOffers
+   * @returns {array} getAllRidesOffers
    * @param {*} req
    * @param {*} res
    */

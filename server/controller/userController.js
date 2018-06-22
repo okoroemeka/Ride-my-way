@@ -1,3 +1,5 @@
+/*User signin and sign up controller object*/
+
 class User {
   /**
    * @returns {object} userSignup

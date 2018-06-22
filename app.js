@@ -10,8 +10,9 @@ import rideOfferAuth from './server/middlewares/rideOfferAuth';
 import rideOffersController from './server/controller/rideOfferControllers';
 import userController from './server/controller/userController';
 
-
+// Initialise express 
 const app = express();
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger('dev'));
@@ -32,4 +33,5 @@ app.post('/api/v1/rides/:rideOfferId/requests', rideOfferAuth.rideOfferExist, ri
 app.put('/api/v1/rides/:rideOfferId', rideOfferAuth.rideOfferExist, rideOffersController.updateRideOfferDetails);
 app.delete('/api/v1/rides/:rideOfferId', rideOfferAuth.rideOfferExist, rideOffersController.deleteRideOffer);
 
+// Export app
 export default app;
