@@ -8,7 +8,7 @@ class Rideoffers {
    */
   static getAllRideOffers(req, res) {
     if (req.query.location) {
-      const currentLocation = req.query.location;
+      const currentLocation = req.query.location.toLowerCase();
       const rideOffers = req.store.ridesOffer
         .filter(rideOffer => rideOffer.currentLocation === currentLocation);
       if (rideOffers.length !== 0) {
@@ -47,7 +47,7 @@ class Rideoffers {
       fistName: req.body.firstName,
       lastName: req.body.lastName,
       phoneNumber: req.body.phoneNumber,
-      currentLocation: req.body.currentLocation,
+      currentLocation: req.body.currentLocation.toLowerCase(),
       destination: req.body.destination,
       departureTime: req.body.departureTime,
     };
