@@ -156,6 +156,9 @@ img{
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
 }
+.profile-button{
+    width: 200px;
+}
 .reject-button{
 	background-color: #ff0000;
 }
@@ -326,6 +329,9 @@ padding-bottom: 20px;
     	color: #ffffff;
     	background-color: #0275d8;
     }
+    .profile-button{
+        margin-bottom: 10px;
+    }
 
     .profile-text{
     	font-size: 1.0em;
@@ -340,3 +346,5 @@ padding-bottom: 20px;
     	margin-bottom: 10px;
     }
   }
+
+  

@@ -1,277 +1,349 @@
 <!DOCTYPE html>
 <html lang="en">
 <head<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/avialable.css">
-    <link rel="stylesheet" href="//normalize-css.googlecode.com/svn/trunk/normalize.css">
-    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
-    <script type="text/javascript" src="js/main.js"> </script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/avialable.css">
+	<link rel="stylesheet" href="//normalize-css.googlecode.com/svn/trunk/normalize.css">
+	<link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+	<script type="text/javascript" src="js/main.js"> </script>
 	<title>ride request</title>
-</head>
-<body>
-	<header>
+	</head>
+
+	<body>
+		<header>
 			<div class="navbar" id="topnavbar">
 				<a href="index.html" id="company-name">RideMyWay</a>
 				<a href="availableRides.html" id="home-text">Available rides</a>
 				<a href="offerRides.html">offer ride</a>
 				<a href="profile.html">profile</a>
 				<a href="signup.html" id="signup-text">sign up</a>
-				<a href="javascript:void(0);" class="icon" onclick="toggleClass()"> <i class="fa fa-bars"></i> </a>
+				<a href="javascript:void(0);" class="icon" onclick="toggleClass()">
+					<i class="fa fa-bars"></i>
+				</a>
 			</div>
 		</header>
-	<div class="container container-body">
-		<section>
-			<div class="row" style="margin: 0">
-				<!-- banner area -->
-				<div class="col-12" id="banner-area">
-					<div class="row">
-						<div class="col-12" id="banner-area-container">
-							<h1>Earn more with your empty seats, offer a ride today.<a href="offerRides.html" id="offer-ride-link"> 
-								<button type="button" class="offer-ride-button">Offer Ride</button></a> 
-							</h1>
+		<div class="container container-body">
+			<section>
+				<div class="row" style="margin: 0">
+					<!-- banner area -->
+					<div class="col-12" id="banner-area">
+						<div class="row">
+							<div class="col-12" id="banner-area-container">
+								<h1>Earn more with your empty seats, offer a ride today.
+									<a href="offerRides.html" id="offer-ride-link">
+										<button type="button" class="offer-ride-button">Offer Ride</button>
+									</a>
+								</h1>
+							</div>
 						</div>
-					</div>
-					
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12" id="ride-offer-caption">
-					<h2>Available Ride Requests</h2>
-				</div>
-			</div>
 
-			<!-- card area -->
-			<div class="row cards-container">
-				<div class="col-3 cards-area">
-					<div class="row">
-						<div class="col-12 card">
-							<img class="Rider-image" src="images/image1.jpg" alt="rider image">
-							<div class="person-details">
-								<p class="interesting-facts">passenger details</p>
-								<ul>
-									<!-- passengers details go here -->
-									<li><span class="facts">Full names:</span>    okoro emeka</li>
-									<li ><span class="facts">Phone number:</span> 08062680531</li>
-									<li ><span class="facts">Current location:</span>     Victoria Island</li>
-									<li ><span class="facts">Destination:</span>  Ikeja</li>
-									<li ><span class="facts">Time of departure:</span> 12:45pm</li>
-									<li ><span class="facts">email</span> somto@gmail.com</li>
-								</ul>
-							</div>
-							<div class="row">
-								<div class="col-6 request-created-button">
-									<a href="request.html"><button type="button" class="button">accept</button></a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12" id="ride-offer-caption">
+						<h2>Available Ride Requests</h2>
+					</div>
+				</div>
+
+				<!-- card area -->
+				<div class="row cards-container">
+					<div class="col-3 cards-area">
+						<div class="row">
+							<div class="col-12 card">
+								<img class="Rider-image" src="images/image1.jpg" alt="rider image">
+								<div class="person-details">
+									<p class="interesting-facts">passenger details</p>
+									<ul>
+										<!-- passengers details go here -->
+										<li>
+											<span class="facts">Full names:</span> okoro emeka</li>
+										<li>
+											<span class="facts">Phone number:</span> 08062680531</li>
+										<li>
+											<span class="facts">Current location:</span> Victoria Island</li>
+										<li>
+											<span class="facts">Destination:</span> Ikeja</li>
+										<li>
+											<span class="facts">Time of departure:</span> 12:45pm</li>
+										<li>
+											<span class="facts">email</span> somto@gmail.com</li>
+									</ul>
 								</div>
-								<div class="col-6 request-created-button">
-									<button type="button" class="button reject-button" >reject</button>
+								<div class="row">
+									<div class="col-6 request-created-button">
+										<a href="request.html">
+											<button type="button" class="button">accept</button>
+										</a>
+									</div>
+									<div class="col-6 request-created-button">
+										<button type="button" class="button reject-button">reject</button>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>	
-				</div>
-				<div class="col-3 cards-area">
-					<div class="row">
-						<div class="col-12 card">
-							<img class="Rider-image" src="images/image3.jpg" alt="rider image">
-							<div class="person-details">
-								<p class="interesting-facts">passenger details</p>
-								<ul>
-									<!-- passengers details go here -->
-									<li><span class="facts">Full names:</span>    Hassan mohamed</li>
-									<li ><span class="facts">Phone number:</span> 08062680531</li>
-									<li ><span class="facts">Current location:</span>     Rumu-okoro</li>
-									<li ><span class="facts">Destination:</span>  Rumu-omasi</li>
-									<li ><span class="facts">Time of departure:</span> 12:45pm</li>
-									<li ><span class="facts">email</span> somto@gmail.com</li>
-								</ul>
-							</div>
-							<div class="row">
-								<div class="col-6 request-created-button">
-									<a href="request.html"><button type="button" class="button">accept</button></a>
+					</div>
+					<div class="col-3 cards-area">
+						<div class="row">
+							<div class="col-12 card">
+								<img class="Rider-image" src="images/image3.jpg" alt="rider image">
+								<div class="person-details">
+									<p class="interesting-facts">passenger details</p>
+									<ul>
+										<!-- passengers details go here -->
+										<li>
+											<span class="facts">Full names:</span> Hassan mohamed</li>
+										<li>
+											<span class="facts">Phone number:</span> 08062680531</li>
+										<li>
+											<span class="facts">Current location:</span> Rumu-okoro</li>
+										<li>
+											<span class="facts">Destination:</span> Rumu-omasi</li>
+										<li>
+											<span class="facts">Time of departure:</span> 12:45pm</li>
+										<li>
+											<span class="facts">email</span> somto@gmail.com</li>
+									</ul>
 								</div>
-								<div class="col-6 request-created-button" >
-									<button type="button" class="button reject-button">reject</button>
+								<div class="row">
+									<div class="col-6 request-created-button">
+										<a href="request.html">
+											<button type="button" class="button">accept</button>
+										</a>
+									</div>
+									<div class="col-6 request-created-button">
+										<button type="button" class="button reject-button">reject</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-3 cards-area">
+						<div class="row">
+							<div class="col-12 card">
+								<img class="Rider-image" src="images/image2.png" alt="rider image">
+								<div class="person-details">
+									<p class="interesting-facts">passenger details</p>
+									<ul>
+										<!-- passengers details go here -->
+										<li>
+											<span class="facts">Full names:</span> sunday Akpan</li>
+										<li>
+											<span class="facts">Phone number:</span> 08062680531</li>
+										<li>
+											<span class="facts">Current location:</span> Mary land</li>
+										<li>
+											<span class="facts">Destination:</span> Ikeja</li>
+										<li>
+											<span class="facts">Time of departure:</span> 12:45pm</li>
+										<li>
+											<span class="facts">email</span> ebuka@gmail.com</li>
+									</ul>
+								</div>
+								<!-- Row 2 card area -->
+								<div class="row">
+									<div class="col-6 request-created-button">
+										<a href="request.html">
+											<button type="button" class="button">accept</button>
+										</a>
+									</div>
+									<div class="col-6 request-created-button">
+										<button type="button" class="button reject-button">reject</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-3 cards-area">
+						<div class="row">
+							<div class="col-12 card">
+								<img class="Rider-image" src="images/image1.jpg" alt="rider image">
+								<div class="person-details">
+									<p class="interesting-facts">passenger details</p>
+									<ul>
+										<!-- passengers details go here -->
+										<li>
+											<span class="facts">Full names:</span> okechukwu Eyiche</li>
+										<li>
+											<span class="facts">Phone number:</span> 08062680531</li>
+										<li>
+											<span class="facts">Current location:</span> Ikotun</li>
+										<li>
+											<span class="facts">Destination:</span> mushin</li>
+										<li>
+											<span class="facts">Time of departure:</span> 12:45pm</li>
+										<li>
+											<span class="facts">email</span> okay@gmail.com</li>
+									</ul>
+								</div>
+								<div class="row">
+									<div class="col-6 request-created-button">
+										<a href="request.html">
+											<button type="button" class="button">accept</button>
+										</a>
+									</div>
+									<div class="col-6 request-created-button">
+										<button type="button" class="button reject-button">reject</button>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-3 cards-area">
-					<div class="row">
-						<div class="col-12 card">
-							<img class="Rider-image" src="images/image2.png" alt="rider image">
-							<div class="person-details">
-								<p class="interesting-facts">passenger details</p>
-								<ul>
-									<!-- passengers details go here -->
-									<li><span class="facts">Full names:</span>    sunday Akpan</li>
-									<li ><span class="facts">Phone number:</span> 08062680531</li>
-									<li ><span class="facts">Current location:</span>     Mary land</li>
-									<li ><span class="facts">Destination:</span>  Ikeja</li>
-									<li ><span class="facts">Time of departure:</span> 12:45pm</li>
-									<li ><span class="facts">email</span> ebuka@gmail.com</li>
-								</ul>
-							</div>
-							<!-- Row 2 card area -->
-							<div class="row">
-								<div class="col-6 request-created-button">
-									<a href="request.html"><button type="button" class="button">accept</button></a>
+				<div class="row cards-container">
+					<div class="col-3 cards-area">
+						<div class="row">
+							<div class="col-12 card">
+								<img class="Rider-image" src="images/image3.jpg" alt="rider image">
+								<div class="person-details">
+									<p class="interesting-facts">passenger details</p>
+									<ul>
+										<!-- passengers details go here -->
+										<li>
+											<span class="facts">Full names:</span> kehinde oyedele</li>
+										<li>
+											<span class="facts">Phone number:</span> 08062680531</li>
+										<li>
+											<span class="facts">Current location:</span> Oshodi</li>
+										<li>
+											<span class="facts">Destination:</span> Ikeja</li>
+										<li>
+											<span class="facts">Time of departure:</span> 12:45pm</li>
+										<li>
+											<span class="facts">email</span> kehinde@gmail.com</li>
+									</ul>
 								</div>
-								<div class="col-6 request-created-button">
-									<button type="button" class="button reject-button">reject</button>
+								<div class="row">
+									<div class="col-6 request-created-button">
+										<a href="request.html">
+											<button type="button" class="button">accept</button>
+										</a>
+									</div>
+									<div class="col-6 request-created-button">
+										<button type="button" class="button reject-button">reject</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-3 cards-area">
+						<div class="row">
+							<div class="col-12 card">
+								<img class="Rider-image" src="images/image1.jpg" alt="rider image">
+								<div class="person-details">
+									<p class="interesting-facts">passenger details</p>
+									<ul>
+										<!-- passengers details go here -->
+										<li>
+											<span class="facts">Full names:</span> olumide okedusi</li>
+										<li>
+											<span class="facts">Phone number:</span> 08062680531</li>
+										<li>
+											<span class="facts">Current location:</span> Okota</li>
+										<li>
+											<span class="facts">Destination:</span> Ikeja</li>
+										<li>
+											<span class="facts">Time of departure:</span> 8:45pm</li>
+										<li>
+											<span class="facts">email</span> olumide@gmail.com</li>
+									</ul>
+								</div>
+								<div class="row">
+									<div class="col-6 request-created-button">
+										<a href="request.html">
+											<button type="button" class="button">accept</button>
+										</a>
+									</div>
+									<div class="col-6 request-created-button">
+										<button type="button" class="button reject-button">reject</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-3 cards-area">
+						<div class="row">
+							<div class="col-12 card">
+								<img class="Rider-image" src="images/image2.png" alt="rider image">
+								<div class="person-details">
+									<p class="interesting-facts">passenger details</p>
+									<ul>
+										<!-- passengers details go here -->
+										<li>
+											<span class="facts">Full names:</span> mark stella</li>
+										<li>
+											<span class="facts">Phone number:</span> 08062680531</li>
+										<li>
+											<span class="facts">Current location:</span> Ikorodu</li>
+										<li>
+											<span class="facts">Destination:</span> lekki</li>
+										<li>
+											<span class="facts">Time of departure:</span> 1:45pm</li>
+										<li>
+											<span class="facts">email</span> stella@gmail.com</li>
+									</ul>
+								</div>
+								<div class="row">
+									<div class="col-6 request-created-button">
+										<a href="request.html">
+											<button type="button" class="button">accept</button>
+										</a>
+									</div>
+									<div class="col-6 request-created-button">
+										<button type="button" class="button reject-button">reject</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-3 cards-area">
+						<div class="row">
+							<div class="col-12 card">
+								<img class="Rider-image" src="images/image2.png" alt="rider image">
+								<div class="person-details">
+									<p class="interesting-facts">passenger details</p>
+									<ul>
+										<!-- passengers details go here -->
+										<li>
+											<span class="facts">Full names:</span> Okoro Innocent</li>
+										<li>
+											<span class="facts">Phone number:</span> 08062680531</li>
+										<li>
+											<span class="facts">Current location:</span> Victoria Island</li>
+										<li>
+											<span class="facts">Destination:</span> Ajaa</li>
+										<li>
+											<span class="facts">Time of departure:</span> 4:45pm</li>
+										<li>
+											<span class="facts">email</span> Innocent@gmail.com</li>
+									</ul>
+								</div>
+								<div class="row">
+									<div class="col-6 request-created-button">
+										<a href="request.html">
+											<button type="button" class="button">accept</button>
+										</a>
+									</div>
+									<div class="col-6 request-created-button">
+										<button type="button" class="button reject-button">reject</button>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-3 cards-area">
-					<div class="row">
-						<div class="col-12 card">
-							<img class="Rider-image" src="images/image1.jpg" alt="rider image">
-							<div class="person-details">
-								<p class="interesting-facts">passenger details</p>
-								<ul>
-									<!-- passengers details go here -->
-									<li><span class="facts">Full names:</span>    okechukwu Eyiche</li>
-									<li ><span class="facts">Phone number:</span> 08062680531</li>
-									<li ><span class="facts">Current location:</span>     Ikotun</li>
-									<li ><span class="facts">Destination:</span>  mushin</li>
-									<li ><span class="facts">Time of departure:</span> 12:45pm</li>
-									<li ><span class="facts">email</span> okay@gmail.com</li>
-								</ul>
-							</div>
-							<div class="row">
-								<div class="col-6 request-created-button">
-									<a href="request.html"><button type="button" class="button">accept</button></a>
-								</div>
-								<div class="col-6 request-created-button" >
-									<button type="button" class="button reject-button">reject</button>
-								</div>
-							</div>
-						</div>
-					</div>	
+			</section>
+
+		</div>
+		<footer>
+			<div class="row footer">
+				<div class="col-12 ">
+					<p style="color: #ffffff">Designed by:okoro Emeka © 2018
+						<a href="index.html" style="text-decoration: none; color: #ffffff;"> RideMyWay </a>
+					</p>
 				</div>
 			</div>
-			<div class="row cards-container">
-				<div class="col-3 cards-area">
-					<div class="row">
-						<div class="col-12 card">
-							<img class="Rider-image" src="images/image3.jpg" alt="rider image">
-							<div class="person-details">
-								<p class="interesting-facts">passenger details</p>
-								<ul>
-									<!-- passengers details go here -->
-									<li><span class="facts">Full names:</span>    kehinde oyedele</li>
-									<li ><span class="facts">Phone number:</span> 08062680531</li>
-									<li ><span class="facts">Current location:</span>     Oshodi</li>
-									<li ><span class="facts">Destination:</span>  Ikeja</li>
-									<li ><span class="facts">Time of departure:</span> 12:45pm</li>
-									<li ><span class="facts">email</span> kehinde@gmail.com</li>
-								</ul>
-							</div>
-							<div class="row">
-								<div class="col-6 request-created-button">
-									<a href="request.html"><button type="button" class="button">accept</button></a>
-								</div>
-								<div class="col-6 request-created-button">
-									<button type="button" class="button reject-button">reject</button>
-								</div>
-							</div>
-						</div>
-					</div>	
-				</div>
-				<div class="col-3 cards-area">
-					<div class="row">
-						<div class="col-12 card">
-							<img class="Rider-image" src="images/image1.jpg" alt="rider image">
-							<div class="person-details">
-								<p class="interesting-facts">passenger details</p>
-								<ul>
-									<!-- passengers details go here -->
-									<li><span class="facts">Full names:</span>    olumide okedusi</li>
-									<li ><span class="facts">Phone number:</span> 08062680531</li>
-									<li ><span class="facts">Current location:</span>     Okota</li>
-									<li ><span class="facts">Destination:</span>  Ikeja</li>
-									<li ><span class="facts">Time of departure:</span> 8:45pm</li>
-									<li ><span class="facts">email</span> olumide@gmail.com</li>
-								</ul>
-							</div>
-							<div class="row">
-								<div class="col-6 request-created-button">
-									<a href="request.html"><button type="button" class="button">accept</button></a>
-								</div>
-								<div class="col-6 request-created-button" >
-									<button type="button" class="button reject-button">reject</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-3 cards-area">
-					<div class="row">
-						<div class="col-12 card">
-							<img class="Rider-image" src="images/image2.png" alt="rider image">
-							<div class="person-details">
-								<p class="interesting-facts">passenger details</p>
-								<ul>
-									<!-- passengers details go here -->
-									<li><span class="facts">Full names:</span>    mark stella</li>
-									<li ><span class="facts">Phone number:</span> 08062680531</li>
-									<li ><span class="facts">Current location:</span>     Ikorodu</li>
-									<li ><span class="facts">Destination:</span>  lekki</li>
-									<li ><span class="facts">Time of departure:</span> 1:45pm</li>
-									<li ><span class="facts">email</span> stella@gmail.com</li>
-								</ul>
-							</div>
-							<div class="row">
-								<div class="col-6 request-created-button">
-									<a href="request.html"><button type="button" class="button">accept</button></a>
-								</div>
-								<div class="col-6 request-created-button">
-									<button type="button" class="button reject-button">reject</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-3 cards-area">
-					<div class="row">
-						<div class="col-12 card">
-							<img class="Rider-image" src="images/image2.png" alt="rider image">
-							<div class="person-details">
-								<p class="interesting-facts">passenger details</p>
-								<ul>
-									<!-- passengers details go here -->
-									<li><span class="facts">Full names:</span>    Okoro Innocent</li>
-									<li ><span class="facts">Phone number:</span> 08062680531</li>
-									<li ><span class="facts">Current location:</span>     Victoria Island</li>
-									<li ><span class="facts">Destination:</span>  Ajaa</li>
-									<li ><span class="facts">Time of departure:</span> 4:45pm</li>
-									<li ><span class="facts">email</span> Innocent@gmail.com</li>
-								</ul>
-							</div>
-							<div class="row">
-								<div class="col-6 request-created-button">
-									<a href="request.html"><button type="button" class="button">accept</button></a>
-								</div>
-								<div class="col-6 request-created-button">
-									<button type="button" class="button reject-button">reject</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		
-	</div>
-	<footer>
-		<div class="row footer">
-			<div class="col-12 ">
-				<p style="color: #ffffff">Designed by:okoro Emeka © 2018<a href="index.html" style="text-decoration: none; color: #ffffff;"> RideMyWay </a></p>
-			</div>
-		</div>	
-	</footer>
-</body>
+		</footer>
+	</body>
+
 </html>
