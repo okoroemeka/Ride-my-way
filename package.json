@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon bin/www --exec babel-node --presets env",
-    "build": "babel bin/www -d dist --presets env",
+    "start:dev": "nodemon bin/www --exec babel-node --presets env",
+    "start": "babel bin/www -d dist --presets env",
     "serve": "node dist/www",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "test": "NODE_ENV=test nyc --reporter=html --reporter=text mocha --compilers js:babel-register server/test --exit --timeout 20000"
+    "test": "nyc --reporter=html --reporter=text mocha --compilers js:babel-register server/test --exit --timeout 20000"
   },
   "repository": {
     "type": "git",
