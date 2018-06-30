@@ -1,3 +1,5 @@
+import rideOfferStore from '../seedData/rideOfferSeedData';
+import rideRequestStore from '../seedData/rideRequestSeedData';
 /*Ride offer controller Object*/
 
 class Rideoffers {
@@ -9,7 +11,7 @@ class Rideoffers {
   static getAllRideOffers(req, res) {
     if (req.query.location) {
       const currentLocation = req.query.location.toLowerCase();
-      const rideOffers = req.store.ridesOffer
+      const rideOffers = rideOfferStore
         .filter(rideOffer => rideOffer.currentLocation === currentLocation);
       if (rideOffers.length !== 0) {
         return res.status(200).send(rideOffers);
@@ -18,19 +20,25 @@ class Rideoffers {
         message: 'No ride offers within this location',
       });
     }
-    const allRideOffers = req.store.ridesOffer;
-    return res.status(200).send(allRideOffers);
+    if (rideOfferStore.length === 0) {
+      return res.status(404).send({
+        message: 'No ride offers presently',
+      });
+    }
+    return res.status(200).send(rideOfferStore);
   }
   /**
    *@returns {Object} getSpecificRideOffers
    * @param {*} req
    * @param {*} res
   */
-  static getSpecificRideOffers(req, res) {
+  static getSpecificRideOffer(req, res) {
     const Id = req.params.rideOfferId;
-    const rideOffer = req.store.ridesOffer[Id];
-    if (rideOffer) {
-      return res.status(200).send(rideOffer);
+    // callback function
+    const ride = rideOfferStore.filter(rideOffer => rideOffer.id.toString() === Id.toString());
+    // const specificRide = rideOfferStore.find(rideOffer);
+    if (ride.length === 1) {
+      return res.status(200).send(ride[0]);
     }
     return res.status(404).send({
       message: 'Ride offer does not exist',
@@ -43,17 +51,18 @@ class Rideoffers {
    * @param {*} res
   */
   static creatRideOffer(req, res) {
+    const rideOfferId = rideOfferStore.length + 1;
     const rideOfferDetails = {
-      fistName: req.body.firstName,
+      id: rideOfferId,
+      fisrtName: req.body.firstName,
       lastName: req.body.lastName,
       phoneNumber: req.body.phoneNumber,
       currentLocation: req.body.currentLocation.toLowerCase(),
       destination: req.body.destination,
       departureTime: req.body.departureTime,
     };
-    const rideOfferId = req.store.ridesOffer.length;
-    req.store.ridesOffer.push(rideOfferDetails);
-    res.status(201).send({ rideOfferId });
+    rideOfferStore.push(rideOfferDetails);
+    res.status(201).send(rideOfferDetails);
   }
 
   /**
@@ -63,16 +72,15 @@ class Rideoffers {
   */
   static joinRide(req, res) {
     const rideRequestDetails = {
+      id: req.params.rideOfferId,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       phoneNumber: req.body.phoneNumber,
       currentLocation: req.body.currentLocation,
       departureTime: req.body.departureTime,
     };
-    const offerId = req.params.rideOfferId;
-    const rideRequestId = req.store.ridesOffer[offerId].rideRequests.length;
-    req.store.ridesOffer[offerId].rideRequests.push(rideRequestDetails);
-    res.status(201).send({ rideRequestId });
+    rideRequestStore.push(rideRequestDetails);
+    return res.status(201).send(rideRequestDetails);
   }
 
   /**
@@ -81,18 +89,17 @@ class Rideoffers {
    * @param {*} res
   */
   static updateRideOfferDetails(req, res) {
-    const offerId = req.params.rideOfferId;
+    const Id = req.params.rideOfferId;
     const informationToUpdate = {
+      id: Id,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       phoneNumber: req.body.phoneNumber,
       currentLocation: req.body.currentLocation,
       departureTime: req.body.departureTime,
     };
-    req.store.ridesOffer[offerId] = informationToUpdate;
-    return res.status(200).send({
-      message: 'Ride details updated',
-    });
+    rideOfferStore[Id - 1] = informationToUpdate;
+    return res.status(200).send(rideOfferStore[Id - 1]);
   }
 
   /**
@@ -102,7 +109,7 @@ class Rideoffers {
   */
   static deleteRideOffer(req, res) {
     const offerId = req.params.rideOfferId;
-    req.store.ridesOffer.splice(offerId, 1);
+    rideOfferStore.splice(offerId - 1);
     return res.status(204).send();
   }
 }
