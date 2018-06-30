@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "nodemon bin/www --exec babel-node --presets env",
-    "start": "babel bin/www -d dist --presets env",
-    "serve": "node dist/www",
+    "build": "babel bin/www -d dist --presets env",
+    "start": "npm run build && node dist/www",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "test": "nyc --reporter=html --reporter=text mocha --compilers js:babel-register server/test --exit --timeout 20000"
   },
