@@ -7,7 +7,7 @@
     "start": "node dist/www",
     "start:dev": "nodemon bin/www --exec babel-node --presets env",
     "build": "babel bin/www -d dist --presets env",
-    "start": "npm run build && node dist/www",
+    "start": "bin/www --exec babel-node --presets env",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "test": "nyc --reporter=html --reporter=text mocha --compilers js:babel-register server/test --exit --timeout 20000"
   },
