@@ -193,6 +193,9 @@ body, html{
         padding-top:3px; 
         font-size: 10px;
     }
+    .container-body{
+        height: 1024px;
+    }
     .form-area-signin,.form-area-signup,
     .form-area-offer-ride,.form-area-request-ride{
         width: 100%;

@@ -41,6 +41,9 @@ body, html{
 .col-8{
 	width: 66.66%;
 }
+.col-10{
+    width: 91.66%;
+}
 .col-12{
     width: 100%;
 }
@@ -105,8 +108,8 @@ body, html{
 
 /*cards style*/
 .cards-container{
-	margin: 30px 0px;
-	padding-left:5px;
+	margin: 30px 3%;
+	padding-left: 2%;
 }
 
 .card{
@@ -115,16 +118,17 @@ body, html{
 	color: #ffffff;
 	box-shadow: 5px 5px 3px 0px rgba(153,153,153,0.9);
 	border-radius: 10px;
+
 }
 img{
 	object-fit: cover;
 }
-.card-area{
-	height: 500px;
-}
-.person-details,.user-profile-details ul{
-	display: inline;
-	list-style-type: none;
+/*.card-area{
+	margin-right:3%;
+}*/
+.person-details ul,.user-profile-details ul{
+    display: inline;
+    list-style-type: none;
 
 }
 .facts,.profile-facts{
@@ -194,10 +198,14 @@ img{
 }
 .interesting-facts{
 	font-weight: bold;
-	font-size: 1.5em;
+	font-size: 1.2em;
 	margin: 0px 20px;
 }
-.Rider-image,.profile-image{
+.Rider-image{
+    width: 100%;
+    height: 250px;
+}
+.profile-image{
 	width: 100%;
 	height: 350px;
 }
