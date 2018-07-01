@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node dist/www",
     "start:dev": "nodemon bin/www --exec babel-node --presets env",
     "build": "babel bin/www -d dist --presets env",
     "start": "npm run build && node dist/www",
