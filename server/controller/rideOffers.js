@@ -17,21 +17,21 @@ class Rideoffers {
     });
   }
 
-  // static getAllRideOffers(req, res) {
-  //   const query = {
-  //     text: 'SELECT * FROM rides',
-  //   };
-  //   return databaseConnection.query(query, (err, result) => {
-  //     if (err) {
-  //       res.status(400).send(err);
-  //     } else if (result.rowCount === 0) {
-  //       res.status(404).send({
-  //         message: 'No ride offer available',
-  //       });
-  //     }
-  //     res.status(200).send(result.rows);
-  //   });
-  // }
+  static getAllRideOffers(req, res) {
+    const query = {
+      text: 'SELECT * FROM rides',
+    };
+    return databaseConnection.query(query, (err, result) => {
+      if (err) {
+        res.status(400).send(err);
+      } else if (result.rowCount === 0) {
+        res.status(404).send({
+          message: 'No ride offer available',
+        });
+      }
+      res.status(200).send(result.rows);
+    });
+  }
 
   // static getSpecificRideOffer(req, res) {
   //   const query = {
