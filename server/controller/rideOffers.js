@@ -33,17 +33,22 @@ class Rideoffers {
     });
   }
 
-  // static getSpecificRideOffer(req, res) {
-  //   const query = {
-  //     text: 'SELECT * FROM rides WHERE id = $1',
-  //     values: [req.params.id],
-  //   };
-  //   return databaseConnection.query(query, (err, result) => {
-  //     if (err) {
-  //       res.status(400).send(err);
-  //     }
-  //     res.status(200).send(result);
-  //   });
-  // }
+  static getSpecificRideOffer(req, res) {
+    const rideId = parseInt(req.params.rideOfferId, 10);
+    const query = {
+      text: 'SELECT * FROM rides WHERE id = $1',
+      values: [rideId],
+    };
+    return databaseConnection.query(query, (err, result) => {
+      if (err) {
+        res.status(400).send(err);
+      } else if (result.rowCount === 0) {
+        res.status(404).send({
+          message: 'Ride offer no longer exists',
+        });
+      }
+      res.status(200).send(result.rows[0]);
+    });
+  }
 }
 export default Rideoffers;
