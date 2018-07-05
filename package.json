@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "migrate": "psql -U postgres -f server/models/index.sql",
     "start": "node server/dist/app.js",
     "start:dev": "nodemon server/app.js --exec babel-node --presets env",
     "build": "babel server -d server/dist --presets env",
@@ -22,10 +23,13 @@
   },
   "homepage": "https://github.com/okoroemeka/Ride-my-way#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
     "morgan": "^1.9.0",
     "nyc": "^12.0.2",
     "pg": "^7.4.3"
