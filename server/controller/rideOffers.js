@@ -5,15 +5,20 @@ import databaseConnection from '../models/config';
 class Rideoffers {
   static createRide(req, res) {
     const query = {
-      text: 'INSERT INTO rides(first_name,last_name,phone_number,destination,current_location,departure_time, user_id ) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-      values: [req.body.first_name, req.body.last_name, req.body.phone_number,
-        req.body.destination, req.body.current_location, req.body.departure_time, req.body.user_id],
+      text: 'INSERT INTO rides(destination,current_location,departure_time, user_id ) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+      values: [req.body.destination, req.body.current_location, req.body.departure_time],
     };
     return databaseConnection.query(query, (err, result) => {
       if (err) {
-        res.status(400).send(err);
+        res.status(500).send({
+          status: 'error',
+          message: 'Unable to communicate with server',
+        });
       }
-      res.status(201).send(result.rows);
+      res.status(201).send({
+        status: 'success',
+        data: result.rows,
+      });
     });
   }
 
@@ -23,13 +28,20 @@ class Rideoffers {
     };
     return databaseConnection.query(query, (err, result) => {
       if (err) {
-        res.status(400).send(err);
+        res.status(400).send({
+          status: 'error',
+          message: 'Unable to communicate with server',
+        });
       } else if (result.rowCount === 0) {
         res.status(404).send({
-          message: 'No ride offer available',
+          status: 'fail',
+          data: { text: 'No ride offer available' },
         });
       }
-      res.status(200).send(result.rows);
+      res.status(200).send({ 
+        status: 'success',
+        data: result.rows,
+      });
     });
   }
 
@@ -41,13 +53,20 @@ class Rideoffers {
     };
     return databaseConnection.query(query, (err, result) => {
       if (err) {
-        res.status(400).send(err);
+        res.status(500).send({
+          status: 'error',
+          message: 'Unable to communicate with server',
+        });
       } else if (result.rowCount === 0) {
         res.status(404).send({
-          message: 'Ride offer no longer exists',
+          status: 'fail',
+          message: 'Ride offer not found',
         });
       }
-      res.status(200).send(result.rows[0]);
+      res.status(200).send({
+        status: 'success',
+        data: result.rows[0],
+      });
     });
   }
 }

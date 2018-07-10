@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "migrate": "psql -U postgres -f server/models/index.sql",
-    "start": "node server/dist/app.js",
-    "start:dev": "nodemon server/app.js --exec babel-node --presets env",
-    "build": "babel server -d server/dist --presets env",
+    "start": "node dummy-db/dist/app.js",
+    "start:dev": "nodemon dummy-db/app.js --exec babel-node --presets env",
+    "build": "babel server -d dummy-db/dist --presets env",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "test": "nyc --reporter=html --reporter=text mocha --compilers js:babel-register server/test --exit --timeout 20000"
+    "test": "nyc --reporter=html --reporter=text mocha --compilers js:babel-register dummy-db/test --exit --timeout 20000"
   },
   "repository": {
     "type": "git",
