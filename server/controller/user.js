@@ -13,19 +13,25 @@ class User {
   static signup(req, res) {
     const query = {
       text: 'INSERT INTO users(first_name, last_name, phone_number, car_type, car_color, plate_number, email, password) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
-      values: [req.body.firstName, req.body.lastName, req.body.phone_number, req.body.car_type,
-        req.body.car_color, req.body.plate_number,
+      values: [req.body.firstName, req.body.lastName, req.body.phoneNumber, req.body.carType,
+        req.body.carColor, req.body.plateNumber,
         req.body.email, bcrypt.hashSync(req.body.password, 10)],
     };
     const query2 = {
       text: 'SELECT * FROM users WHERE email = $1',
       values: [req.body.email],
     };
+    if (req.body.password !== req.body.confirmPassword) {
+      return res.status(400).send({
+        status: 'Fail',
+        message: 'Retype your password',
+      });
+    }
     databaseConnection.query(query2, (error, result) => {
       // releasing the client back into the pool.
       if (error) {
         return res.status(500).send({
-          status: 'error',
+          status: error,
           message: 'Unable to communicate with server',
         });
       } else if (result.rowCount !== 0) {
@@ -93,10 +99,7 @@ class User {
         });
       }
     });
-
-    // checking if user does not exist
   }
 }
-
 
 export default User;

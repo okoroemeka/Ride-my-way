@@ -6,11 +6,11 @@ class Rideoffers {
   static createRide(req, res) {
     const query = {
       text: 'INSERT INTO rides(destination,current_location,departure_time, user_id ) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-      values: [req.body.destination, req.body.current_location, req.body.departure_time, userId],
+      values: [req.body.destination, req.body.current_location, req.body.departure_time],
     };
     return databaseConnection.query(query, (err, result) => {
       if (err) {
-        res.status(400).send({
+        res.status(500).send({
           status: 'error',
           message: 'Unable to communicate with server',
         });

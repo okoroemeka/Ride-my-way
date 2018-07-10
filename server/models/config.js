@@ -1,8 +1,8 @@
 import pg from 'pg';
 
 const config = {
-  user: 'USRE',
-  database: 'ridemyway',
+  user: 'postgres',
+  database: 'postgres',
   password: 'null',
   port: 5432,
   max: 10,
