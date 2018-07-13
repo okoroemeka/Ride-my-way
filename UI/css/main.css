@@ -84,11 +84,12 @@ body, html{
     padding-right: 20px;
 }
 
-
+.request-body{
+    height: 100%;
+}
 /*form area style*/
 .banner-area{
     text-align: center;
-    /*padding: 70px 0;*/
     color: #ffffff;
     font-family: 'Dancing Script', cursive;
 }
@@ -169,9 +170,25 @@ body, html{
     justify-content: center;
 }
 
+@media only screen and (max-width: 1024px){
+    .banner-area{
+        width: 100%;
+        padding-top:3px; 
+        font-size: 10px;
+    }
+    .container-body{
+        height: 1366px;
+    }
+    .form-area-signin,.form-area-signup,
+    .form-area-offer-ride,.form-area-request-ride{
+        width: 100%;
+        justify-content: center;
+    }
+}
 /* When the screen is less than 800 pixels wide*/
 
 @media only screen and (max-width: 800px) {
+ 
     .navbar a:not(:first-child) {display: none;}
     .navbar a.icon {
         float: right;
@@ -188,20 +205,9 @@ body, html{
         display: block;
         text-align: center;
     }
-    .banner-area{
-        width: 100%;
-        padding-top:3px; 
-        font-size: 10px;
-    }
     .container-body{
         height: 1024px;
     }
-    .form-area-signin,.form-area-signup,
-    .form-area-offer-ride,.form-area-request-ride{
-        width: 100%;
-        justify-content: center;
-    }
-
-  }
+}
 
   

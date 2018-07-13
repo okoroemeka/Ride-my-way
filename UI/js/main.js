@@ -1,5 +1,4 @@
- // Toggle class to add responsive to them.
- const toggleClass = () => {
+const toggleClass = () => {
 
     let toggleClassName = document.getElementById("topnavbar");
 
