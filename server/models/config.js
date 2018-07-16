@@ -1,5 +1,7 @@
 import pg from 'pg';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const config = {
   user: 'postgres',
   database: 'postgres',
@@ -8,7 +10,7 @@ const config = {
   max: 10,
   idleTimeoutMillis: 3000,
 };
+// const connectionString = process.env.DB_URL;
+const dbConnection = new pg.Pool(config);
 
-const databaseConnection = new pg.Pool(config);
-
-export default databaseConnection;
+export default dbConnection;
