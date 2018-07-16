@@ -6,5 +6,5 @@ package-lock.json
 .nyc_output/
 coverage/
 dummy-db/
-server/models/config.js/
+server/models/config.js
 .env

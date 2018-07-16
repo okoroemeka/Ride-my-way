@@ -12,7 +12,7 @@ const routes = (app) => {
   app.get('/api/v1/rides', rideOffers.getAllRideOffers);
   app.get('/api/v1/rides/:rideOfferId', rideOffers.getSpecificRideOffer);
   app.post('/api/v1/rides', rideOffers.createRide);
-  // app.post('/api/v1/rides/:rideOfferId/requests', rideOffers.joinRide);
+  app.post('/api/v1/rides/:rideOfferId/requests', rideOffers.joinRide);
   // app.put('/api/v1/rides/:rideOfferId', rideOffers.updateRideOfferDetails);
   // app.delete('/api/v1/rides/:rideOfferId', rideOffers.deleteRideOffer);
 };
