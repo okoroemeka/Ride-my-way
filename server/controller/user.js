@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import dotenv from 'dotenv';
-import databaseConnection from '../models/config';
+import dbConnection from '../models/config';
 
 dotenv.config();
 class User {
@@ -12,58 +12,80 @@ class User {
    */
   static signup(req, res) {
     const query = {
-      text: 'INSERT INTO users(first_name, last_name, phone_number, car_type, car_color, plate_number, email, password) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
-      values: [req.body.firstName, req.body.lastName, req.body.phoneNumber, req.body.carType,
-        req.body.carColor, req.body.plateNumber,
-        req.body.email, bcrypt.hashSync(req.body.password, 10)],
+      text: 'INSERT INTO users(firstname,lastname, email,telephone,password) VALUES($1, $2 ,$3, $4, $5) RETURNING *',
+      values: [req.body.firstname, req.body.lastname, req.body.email,
+        parseInt(req.body.telephone, 10), bcrypt.hashSync(req.body.password, 10)],
     };
     const query2 = {
       text: 'SELECT * FROM users WHERE email = $1',
       values: [req.body.email],
     };
-    if (req.body.password !== req.body.confirmPassword) {
-      return res.status(400).send({
-        status: 'Fail',
-        message: 'Retype your password',
-      });
-    }
-    databaseConnection.query(query2, (error, result) => {
-      // releasing the client back into the pool.
-      if (error) {
-        return res.status(500).send({
-          status: error,
-          message: 'Unable to communicate with server',
-        });
-      } else if (result.rowCount !== 0) {
+    if ((req.body.firstname !== undefined && req.body.firstname.trim().length !== 0) &&
+    (req.body.lastname !== undefined && req.body.lastname.trim().length !== 0) &&
+    (req.body.email !== undefined && req.body.email.trim().length !== 0) &&
+    (req.body.telephone !== undefined && req.body.telephone.trim().length !== 0) &&
+    (req.body.password !== undefined && req.body.password.trim().length !== 0) &&
+    (req.body.confirmPassword !== undefined && req.body.confirmPassword.trim().length !== 0)) {
+      if (req.body.password !== req.body.confirmPassword) {
         return res.status(409).send({
           status: 'fail',
-          message: 'email already exist',
+          message: 'The passwords do not match',
         });
       }
-      return databaseConnection.query(query, (err, result1) => {
-        if (err) {
-          res.status(500).send({
-            status: 'error',
-            message: 'Unable to communicate with server',
-          });
-        }
-        const accessToken = jwt.sign(
-          {
-            user_id: result1.rows[0].id,
-            email: result1.rows[0].email,
-          },
-          process.env.SECRET_KEY,
-          {
-            expiresIn: 60 * 60,
-          },
-        );
-        res.status(201).send({
-          status: 'success',
-          message: ' Welcome to Ride my way',
-          token: accessToken,
-        });
+      dbConnection.query(query2)
+        .then((result) => {
+          if (result.rowCount !== 0) {
+            return res.status(409).send({
+              status: 'fail',
+              message: 'email alredy exists',
+            });
+          }
+          dbConnection.query(query)
+            .then((result1) => {
+              if (result1.rowCount !== 1) {
+                return res.status(500).send({
+                  status: 'error',
+                  message: 'Application error',
+                });
+              }
+              const accessToken = jwt.sign(
+                {
+                  user_id: result1.rows[0].user_id,
+                  email: result1.rows[0].email,
+                },
+                process.env.SECRET_KEY,
+                {
+                  expiresIn: 60 * 60,
+                },
+              );
+              return res.status(201).send({
+                status: 'success',
+                message: 'Welcome to ride my way',
+                data: {
+                  firstname: result1.rows[0].firstname,
+                  lastname: result1.rows[0].lastname,
+                  email: result1.rows[0].email,
+                  telephone: result1.rows[0].telephone,
+                },
+                token: accessToken,
+              });
+            })
+            .catch(error1 => res.status(500).send({
+              status: 'error',
+              message: 'Internal server error',
+              error: error1,
+            }));
+        })
+        .catch(error2 => res.status(500).send({
+          message: 'app error',
+          error: error2,
+        }));
+    } else {
+      return res.status(409).send({
+        status: 'fail',
+        message: 'All fields are required please',
       });
-    });
+    }
   }
 
   static signIn(req, res) {
@@ -71,33 +93,43 @@ class User {
       text: 'SELECT * FROM users WHERE email = $1',
       values: [req.body.email],
     };
-    return databaseConnection.query((query), (err, result) => {
-      if (err) {
-        res.status(400).send({
-          status: 'error',
-          message: 'Unable to communicate with server',
-
+    if ((req.body.email !== undefined && req.body.email.trim().length !== 0) &&
+    (req.body.password !== undefined && req.body.password.trim().length !== 0)) {
+      return dbConnection.query(query)
+        .then((result) => {
+          if (result.rowCount === 0) {
+            res.status(409).send({
+              status: 'fail',
+              message: 'Wrong email or password',
+            });
+          } else if (bcrypt.compareSync(req.body.password, result.rows[0].password)) {
+            const userToken = jwt.sign(
+              {
+                id: result.rows[0].user_id,
+                email: result.rows[0].email,
+              },
+              process.env.SECRET_KEY,
+              {
+                expiresIn: 60 * 60,
+              },
+            );
+            res.status(200).send({
+              status: 'success',
+              message: 'Login successful',
+              token: userToken,
+            });
+          }
+        })
+        .catch((error) => {
+          res.status(500).send({
+            status: 'error',
+            message: 'Internal server error, try again later',
+          });
         });
-      } else if (result.rowCount !== 1) {
-        res.status(409).send({
-          status: 'fail',
-          message: 'wrong email or password, try again',
-        });
-      } else if (bcrypt.compareSync(req.body.password, result.rows[0].password)) {
-        const userToken = jwt.sign(
-          {
-            id: result.id,
-            username: result.email,
-          },
-          process.env.SECRET_KEY,
-          { expiresIn: 60 * 60 },
-        );
-        res.status(200).send({
-          status: 'success',
-          message: 'Login successful',
-          token: userToken,
-        });
-      }
+    }
+    return res.status(401).send({
+      status: 'fail',
+      message: 'All fields are required',
     });
   }
 }
