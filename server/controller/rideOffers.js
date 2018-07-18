@@ -7,7 +7,7 @@ class Rideoffers {
     const query = {
       text: 'INSERT INTO rides(destination,current_location,departure_time, seat_available,user_id) VALUES($1, $2, $3, $4, $5) RETURNING *',
       values: [req.body.destination, req.body.current_location,
-        req.body.departure_time, req.body.seat_available, req.body.user_id],
+        req.body.departure_time, req.body.seat_available, req.decoded.user_id],
     };
     if ((req.body.destination !== undefined && req.body.destination.trim().length !== 0) &&
     (req.body.current_location !== undefined && req.body.current_location.trim().length !== 0) &&
@@ -90,11 +90,15 @@ class Rideoffers {
     const query1 = {
       text: 'INSERT INTO rideRequest(pickup_location,departure_time,ride_id,user_id) VALUES($1, $2, $3, $4) RETURNING *',
       values: [req.body.pickup_location, req.body.departure_time,
-        req.body.ride_id, req.body.user_id],
+        req.params.rideOfferId, req.decoded.user_id],
     };
     const query2 = {
       text: 'SELECT * FROM rideRequest WHERE ride_id = $1',
       values: [rideId],
+    };
+    const query3 = {
+      text: 'SELECT * FROM users WHERE email = $1',
+      values: [req.decoded.email],
     };
     return dbConnection.query(query)
       .then((result) => {
@@ -104,31 +108,40 @@ class Rideoffers {
             message: 'Ride offer does not exist',
           });
         }
-        const seats = result.rows[0].seat_available;
-        return dbConnection.query(query2)
-          .then((result1) => {
-            if (result1.rowCount < parseInt(seats, 10)) {
-              return dbConnection.query(query1)
-                .then((result2) => {
-                  res.status(201).send({
-                    status: 'success',
-                    message: 'Your request has been sent',
-                    data: result2.rows[0],
-                  });
-                })
-                .catch(err => res.status(500).send({
-                  message: 'Internal server error1',
-                }));
-            }
-            return res.status(409).send({
-              status: 'fail',
-              message: 'All seats have been taken',
-            });
-          })
-          .catch(err => res.status(500).send({
-            status: 'error',
-            message: 'Internal server error2',
-          }));
+        const user = result.rows[0].user_id;
+        if (parseInt(user, 10) !== parseInt(req.decoded.user_id, 10)) {
+          const seats = result.rows[0].seat_available;
+          return dbConnection.query(query2)
+            .then((result1) => {
+              if (result1.rowCount < parseInt(seats, 10)) {
+                return dbConnection.query(query1)
+                  .then((result2) => {
+                    res.status(201).send({
+                      status: 'success',
+                      message: 'Your request has been sent',
+                      data: result2.rows[0],
+                    });
+                  })
+                  .catch(err => res.status(500).send({
+                    status: 'error',
+                    message: 'Internal server error1',
+                    data: err,
+                  }));
+              }
+              return res.status(409).send({
+                status: 'fail',
+                message: 'All seats have been taken',
+              });
+            })
+            .catch(err => res.status(500).send({
+              status: 'error',
+              message: 'Internal server error2',
+            }));
+        }
+        return res.status(401).send({
+          status: 'fail',
+          message: 'Invalid request',
+        });
       })
       .catch(err => res.status(500).send({
         status: 'error',

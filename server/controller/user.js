@@ -13,8 +13,8 @@ class User {
   static signup(req, res) {
     const query = {
       text: 'INSERT INTO users(firstname,lastname, email,telephone,password) VALUES($1, $2 ,$3, $4, $5) RETURNING *',
-      values: [req.body.firstname, req.body.lastname, req.body.email,
-        parseInt(req.body.telephone, 10), bcrypt.hashSync(req.body.password, 10)],
+      values: [req.body.firstname.trim(), req.body.lastname.trim(), req.body.email.trim(),
+        parseInt(req.body.telephone.trim(), 10), bcrypt.hashSync(req.body.password.trim(), 10)],
     };
     const query2 = {
       text: 'SELECT * FROM users WHERE email = $1',
@@ -50,18 +50,17 @@ class User {
               }
               const accessToken = jwt.sign(
                 {
-                  user_id: result1.rows[0].user_id,
+                  user_id: result1.rows[0].id,
                   email: result1.rows[0].email,
                 },
                 process.env.SECRET_KEY,
-                {
-                  expiresIn: 60 * 60,
-                },
+                { expiresIn: '24h' },
               );
               return res.status(201).send({
                 status: 'success',
                 message: 'Welcome to ride my way',
                 data: {
+                  user_id: result1.rows[0].id,
                   firstname: result1.rows[0].firstname,
                   lastname: result1.rows[0].lastname,
                   email: result1.rows[0].email,
@@ -91,7 +90,7 @@ class User {
   static signIn(req, res) {
     const query = {
       text: 'SELECT * FROM users WHERE email = $1',
-      values: [req.body.email],
+      values: [req.body.email.trim()],
     };
     if ((req.body.email !== undefined && req.body.email.trim().length !== 0) &&
     (req.body.password !== undefined && req.body.password.trim().length !== 0)) {
@@ -105,12 +104,12 @@ class User {
           } else if (bcrypt.compareSync(req.body.password, result.rows[0].password)) {
             const userToken = jwt.sign(
               {
-                id: result.rows[0].user_id,
+                user_id: result.rows[0].id,
                 email: result.rows[0].email,
               },
               process.env.SECRET_KEY,
               {
-                expiresIn: 60 * 60,
+                expiresIn: '24h',
               },
             );
             res.status(200).send({
