@@ -1,6 +1,6 @@
 // Import controllers
 import rideOffers from '../controller/rideOffers';
-// import rideOfferAuth from '../middlewares/rideOfferAuth';
+import verifyToken from '../middleware/auth';
 
 import user from '../controller/user';
 
@@ -9,10 +9,10 @@ import user from '../controller/user';
 const routes = (app) => {
   app.post('/api/v1/auth/signup', user.signup);
   app.post('/api/v1/auth/signin', user.signIn);
-  app.get('/api/v1/rides', rideOffers.getAllRideOffers);
-  app.get('/api/v1/rides/:rideOfferId', rideOffers.getSpecificRideOffer);
-  app.post('/api/v1/rides', rideOffers.createRide);
-  app.post('/api/v1/rides/:rideOfferId/requests', rideOffers.joinRide);
+  app.get('/api/v1/rides', verifyToken, rideOffers.getAllRideOffers);
+  app.get('/api/v1/rides/:rideOfferId', verifyToken, rideOffers.getSpecificRideOffer);
+  app.post('/api/v1/rides', verifyToken, rideOffers.createRide);
+  app.post('/api/v1/rides/:rideOfferId/requests', verifyToken, rideOffers.joinRide);
   // app.put('/api/v1/rides/:rideOfferId', rideOffers.updateRideOfferDetails);
   // app.delete('/api/v1/rides/:rideOfferId', rideOffers.deleteRideOffer);
 };
