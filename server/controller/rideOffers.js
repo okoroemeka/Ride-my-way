@@ -83,6 +83,7 @@ class Rideoffers {
   }
   static joinRide(req, res) {
     const rideId = parseInt(req.params.rideOfferId, 10);
+    const fullName = `${req.decoded.firstName} ${req.decoded.lastName}`;
     const query = {
       text: 'SELECT * FROM rides WHERE id = $1',
       values: [rideId],
@@ -95,10 +96,6 @@ class Rideoffers {
     const query2 = {
       text: 'SELECT * FROM rideRequest WHERE ride_id = $1',
       values: [rideId],
-    };
-    const query3 = {
-      text: 'SELECT * FROM users WHERE email = $1',
-      values: [req.decoded.email],
     };
     return dbConnection.query(query)
       .then((result) => {
@@ -125,10 +122,11 @@ class Rideoffers {
                   .catch(err => res.status(500).send({
                     status: 'error',
                     message: 'Internal server error1',
-                    data: err,
+                    error: err,
+                    full: fullName,
                   }));
               }
-              return res.status(409).send({
+              return res.status(400).send({
                 status: 'fail',
                 message: 'All seats have been taken',
               });
@@ -146,6 +144,46 @@ class Rideoffers {
       .catch(err => res.status(500).send({
         status: 'error',
         message: 'Internal server error3',
+      }));
+  }
+  static getAllRideRequest(req, res) {
+    const queryRideReq = {
+      text: 'SELECT * FROM rideRequest WHERE ride_id = $1',
+      values: [parseInt(req.params.rideOfferId, 10)],
+    };
+    const queryRide = {
+      text: 'SELECT * FROM rides WHERE id = $1',
+      values: [parseInt(req.params.rideOfferId, 10)],
+    };
+    return dbConnection.query(queryRide)
+      .then((ride) => {
+        if (req.decoded.user_id === ride.rows[0].user_id) {
+          return dbConnection.query(queryRideReq)
+            .then((result) => {
+              if (result.rowCount > 0) {
+                return res.status(200).send({
+                  status: 'success',
+                  data: result.rows,
+                });
+              }
+              return res.status(404).send({
+                status: 'fail',
+                message: 'No ride request found',
+              });
+            })
+            .catch(err => res.status(500).send({
+              status: 'error',
+              message: 'Internal server error, please try again later',
+            }));
+        }
+        return res.status(401).send({
+          status: 'fail',
+          message: 'You are not authorize to perform this action',
+        });
+      })
+      .catch(err => res.status(500).send({
+        status: 'error',
+        message: 'Internal server error, please try again later',
       }));
   }
 }
