@@ -48,14 +48,6 @@ class User {
                   message: 'Application error',
                 });
               }
-              const accessToken = jwt.sign(
-                {
-                  user_id: result1.rows[0].id,
-                  email: result1.rows[0].email,
-                },
-                process.env.SECRET_KEY,
-                { expiresIn: '24h' },
-              );
               return res.status(201).send({
                 status: 'success',
                 message: 'Welcome to ride my way',
@@ -66,7 +58,6 @@ class User {
                   email: result1.rows[0].email,
                   telephone: result1.rows[0].telephone,
                 },
-                token: accessToken,
               });
             })
             .catch(error1 => res.status(500).send({
@@ -105,6 +96,8 @@ class User {
             const userToken = jwt.sign(
               {
                 user_id: result.rows[0].id,
+                firstName: result.rows[0].firstname,
+                lastName: result.rows[0].lastname,
                 email: result.rows[0].email,
               },
               process.env.SECRET_KEY,
