@@ -14,7 +14,7 @@ const routes = (app) => {
   app.post('/api/v1/rides', verifyToken, rideOffers.createRide);
   app.post('/api/v1/rides/:rideOfferId/requests', verifyToken, rideOffers.joinRide);
   app.get('/api/v1/rides/:rideOfferId/requests', verifyToken, rideOffers.getAllRideRequest);
-  // app.put('/api/v1/rides/:rideOfferId', rideOffers.updateRideOfferDetails);
+  app.put('/api/v1/rides/:rideOfferId/requests/:requestId', verifyToken, rideOffers.updateRideRequest);
   // app.delete('/api/v1/rides/:rideOfferId', rideOffers.deleteRideOffer);
 };
 
