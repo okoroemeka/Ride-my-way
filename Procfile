@@ -1,1 +1,1 @@
-web: node server/dist/app.js
+web: npm install && npm start

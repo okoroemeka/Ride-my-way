@@ -18,7 +18,7 @@ const verifyToken = (req, res, next) => {
       if (err) {
         return res.status(401).send({
           status: 'fail',
-          message: 'You do not have the permission to use this resources',
+          message: 'You do not have the permission to use this resources,please log in',
         });
       }
       req.decoded = decoded;
