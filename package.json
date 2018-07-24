@@ -3,11 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "8.11.1",
+    "npm": "5.6.0"
+  },
   "scripts": {
     "migrate": "psql -U postgres -f server/models/index.sql",
-    "start": "node server/dist/app.js",
+    "start": "npm run build && npm run serve",
     "start:dev": "nodemon server/app.js --exec babel-node --presets env",
     "build": "babel server -d server/dist --presets env",
+    "serve": "nodemon server/dist/app.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "test": "nyc --reporter=html --reporter=text mocha --compilers js:babel-register dummy-db/test --exit --timeout 20000"
   },
