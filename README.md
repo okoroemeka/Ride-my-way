@@ -10,20 +10,20 @@ A template for ride-my-app with the features below.
 
 ## Required features
 
-1* Users can signup and sign In
-2* Users can offer rides
-3* Driver can request to join a ride offer
-4* Users can view ride offers and respond to it
-5* Users can view profile and edit profile
-6* Driver can accept or reject a ride request
-7* Driver can delete ride offer
+1. Users can signup and sign In
+2. Users can offer rides
+3. Driver can request to join a ride offer
+4. Users can view ride offers and respond to it
+5. Users can view profile and edit profile
+6. Driver can accept or reject a ride request
+7. Driver can delete ride offer
 
 ## Technologies used
 
-1* Html and Css on the front end
-2* Nodejs
-3* Expressjs frame work
-4* Mocha,Chai,Chai-Http for test
+1. Html and Css on the front end
+2. Nodejs
+3. Expressjs frame work
+4. Mocha,Chai,Chai-Http for test
 
 ## API End Points
 
@@ -41,10 +41,10 @@ A template for ride-my-app with the features below.
 
 ## Setting up Locally
 
-1* Clone this repository to your local machine
-2* cd to `ride-my-way`
-3* Run `npm install`
-4* Start app with `npm start`
+1. Clone this repository to your local machine
+2. cd to `ride-my-way`
+3. Run `npm install`
+4. Start app with `npm start`
 
 ## Test 
 
