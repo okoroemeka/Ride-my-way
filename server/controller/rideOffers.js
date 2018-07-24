@@ -261,5 +261,44 @@ class Rideoffers {
         message: 'Internal server error, please try again later',
       }));
   }
+  static deleteRideOffer(req, res){
+    const {rideOfferId} = req.params;
+    const deleteQuery = {
+      text: 'DELETE FROM rides WHERE id=$1',
+      values: [rideOfferId],
+    };
+    const selectQuery ={
+      text: 'SELECT * FROM rides WHERE id = $1',
+      values: [rideOfferId]
+    };
+    dbConnection.query(selectQuery)
+      .then((result)=>{
+        if (result.rows[0].user_id !== req.decoded.user_id) {
+          return res.status(401).send({
+            status: 'fail',
+            message: 'Your are not authorized to perform this action',
+          })
+        }
+        return dbConnection.query(deleteQuery)
+          .then((deleteResult) => {
+            return res.status(200).send({
+              status: 'success',
+              message: 'Ride offer deleted successfully'
+            })
+          })
+          .catch((err) => {
+            return res.status(500).send({
+              status: 'error',
+              message: 'Internal server error, please try again later',
+            })
+          })
+      })
+      .catch((error1) => {
+        return res.status(500).send({
+          status: 'error',
+          message: 'Internal server error, please try again later'
+        })
+      })
+  }
 }
 export default Rideoffers;
