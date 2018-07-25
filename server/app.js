@@ -3,7 +3,9 @@ import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import routes from './routes/route';
+import dotenv from 'dotenv';
 
+dotenv.config();
 // Initialise express app
 const app = express();
 

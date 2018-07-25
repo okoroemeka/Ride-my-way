@@ -13,14 +13,14 @@ const config = {
   idleTimeoutMillis: 3000,
 };
 
-if (NODE_ENV === 'test') {
-	connectionString = TEST_DB;
-	ssl = true;
-} else {
-	connectionString = process.env.DATABASE_URL;
-	ssl = false;
-}
+// if (NODE_ENV === 'test') {
+// 	connectionString = TEST_DB;
+// 	ssl = false;
+// } else {
+// 	connectionString = process.env.DATABASE_URL;
+// 	ssl = true;
+// }
 // const connectionString = DB_URL;
-const dbConnection = new pg.Pool({ connectionString, ssl });
+const dbConnection = new pg.Pool({ connectionString: process.env.DATABASE_URL, ssl: true });
 
 export default dbConnection;
