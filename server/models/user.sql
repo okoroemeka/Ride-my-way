@@ -9,6 +9,7 @@ CREATE TABLE users(
 	email VARCHAR NOT NULL,
 	telephone text NOT NULL,
 	password VARCHAR  NOT NULL,
+	image_url VARCHAR,
 	createdAt timestamptz NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	updatedAt timestamptz NOT NULL DEFAULT CURRENT_TIMESTAMP
 )

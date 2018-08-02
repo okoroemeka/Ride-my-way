@@ -27,17 +27,17 @@ A template for ride-my-app with the features below.
 
 ## API End Points
 
-|Verb   |Enpoints                           | Action               | Description          |
-|:------|:----------------------------------|:---------------------|:---------------------|
-|GET    |/rides                             |fetch all ride offers |                      |
-|POST   |/rides                             |create ride offer     |                      |
-|GET    |/rides/<rideId>                    |fetch specific ride   |                      |
-|POST   |/rides/<rideId>/request            |create ride request   |                      |
-|POST   |/auth/signup                       |create user           |                      |
-|POST   |/auth/signIn                       |log in user           |                      |
-|PUT    |/ride/<rideId>/request/<requestId> |respond to ride offer |                      |
-|GET    |/ride/<rideId>/request             |get all ride request  |                      |
-|DELETE |/rides/<rideId>                    |delete ride offer     |                      |
+|Verb   |Enpoints                           | Action               | Description                  |
+|:------|:----------------------------------|:---------------------|:-----------------------------|
+|GET    |/rides                             |fetch all ride offers |Get all available ride offer  |
+|POST   |/rides                             |create ride offer     |creates a new ride offer      |
+|GET    |/rides/:rideId                     |fetch specific ride   |Respond to a ride offer       |
+|POST   |/rides/:rideId/request             |create ride request   |Join ride                     |
+|POST   |/auth/signup                       |create user           |Sign up to the app            |
+|POST   |/auth/signIn                       |log in user           |Log in to the app             |
+|PUT    |/ride/:rideId/request/:requestId   |respond to ride offer |Respond to ride request       |
+|GET    |/ride/:rideId/request              |get all ride request  |View all ride request         |
+|DELETE |/rides/:rideId                     |delete ride offer     |Remove a ride                 |
 
 ## Setting up Locally
 
